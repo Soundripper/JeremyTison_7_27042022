@@ -1,0 +1,20 @@
+Body{
+    margin : auto;
+    max-width : 1200px;
+}
+
+.search_General{
+    height : 60px;
+}
+
+.form-outline{
+    outline:0;
+}
+
+.dropdown-menu{
+    /* position: static !important; */
+}
+
+.h7{
+    font-size: 0.7em;
+}
