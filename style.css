@@ -1,20 +1,50 @@
 Body{
-    margin : auto;
-    max-width : 1200px;
+    margin: auto;
+    max-width: 1200px;
 }
 
 .search_General{
-    height : 60px;
+    height: 60px;
+}
+.searchIcon{
+    line-height: 4rem;
+    position: static;
+    transform: translateX(-30px);
 }
 
-.form-outline{
-    outline:0;
+.dropdown-menu.show{
+    /* overflow:auto; */
+    /* top: -44px !important;
+    left: -4px !important;
+    transform : translate3d(0px, 0px, 0px) !important;
+    padding: 10px;
+    height:300px;
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: wrap; */
+}
+.form-control::-webkit-input-placeholder {
+    color: white;
+    opacity: 0.5;
+}
+.dropdown-item{
+    width: 200px;
+}
+.dropdown-item:hover{
+    background-color: grey;
 }
 
-.dropdown-menu{
-    /* position: static !important; */
+.choices{
+    display: flex;
+    height: 200px;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.dropdown-container{
+    width: 800px;
 }
 
 .h7{
     font-size: 0.7em;
 }
+

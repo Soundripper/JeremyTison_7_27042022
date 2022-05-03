@@ -12,20 +12,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
   <body>
-      <div class="container col-12 mt-4" id="logo">
+      <div class="col-12 mt-4" id="logo">
         <a class="navbar-brand d-flex" href="index.html">
             <img class="mx-auto" src="assets/logo.png" width="268" height="93" alt="Les petits plats Logo" />
         </a>
       </div>
 
       <div class="input-group rounded col-12 mx-auto mt-3" id="searchBar">
-        <input type="search" class="form-control rounded bg-light search_General" placeholder="Rechercher une recette" aria-label="Search" aria-describedby="search-addon" />
-        <span class="input-group-text border-0" id="search-addon">
-            <i class="bi bi-search" ></i>
+        <input type="search" class="form-control rounded bg-light search_General " placeholder="Rechercher une recette" aria-label="Search" aria-describedby="search-addon" />
+        <span class="searchIcon border-0" id="search-addon">
+            <span class="bi bi-search" ></span>
         </span>
       </div>
 
-      <div class="w-100 mt-4 mx-3" id="filterBadges">
+
+      <div class="mt-4 mx-3" id="filterBadges">
         <button type="button" class="btn btn-primary position-relative mr-2 mb-2">
             Coco &nbsp
             <i class="bi bi-x-circle"></i>
@@ -38,92 +39,135 @@
             Lait &nbsp
             <i class="bi bi-x-circle"></i>
         </button>
-        <button type="button" class="btn btn-primary position-relative mr-2 mb-2">
-            Lait &nbsp
+        <button type="button" class="btn btn-success position-relative mr-2 mb-2">
+            Machine &nbsp
             <i class="bi bi-x-circle"></i>
         </button>
-        <button type="button" class="btn btn-primary position-relative mr-2 mb-2">
-            Lait &nbsp
+        <button type="button" class="btn btn-danger position-relative mr-2 mb-2">
+            Ustensile &nbsp
             <i class="bi bi-x-circle"></i>
         </button>
       </div>
 
-      <div class="w-100 mt-2 mx-3 row" id="searchListsDropdowns">
+      <div class="mt-2 mx-3 row" id="searchListsDropdowns">
+
         <div class="dropdown mr-3">
-            <button class="btn btn-primary dropdown-toggle mb-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-primary dropdown-toggle mb-3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Ingrédients
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <div class="form-outline">
-                    <input type="search" id="form1" class="form-control border-0" placeholder="Rechercher un ingrédient" aria-label="Search" />
+            <div class="dropdown-menu bg-primary" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-container">
+                    <div class="form mx-2">
+                        <input type="search" id="ingSearch" class="form-control border-0 bg-primary text-light" placeholder="Rechercher un ingrédient" aria-label="Search" />
+                    </div>
+                    <div class="choices">
+                        <button class="dropdown-item btn-primary text-light" >Lait de coco</button>
+                        <button class="dropdown-item btn-primary text-light" >Sucre</button>
+                        <button class="dropdown-item btn-primary text-light" >Concombre</button>
+                        <button class="dropdown-item btn-primary text-light" >Lait de coco</button>
+                        <button class="dropdown-item btn-primary text-light" >Sucre</button>
+                        <button class="dropdown-item btn-primary text-light" >Concombre</button>
+                        <button class="dropdown-item btn-primary text-light" >Lait de coco</button>
+                        <button class="dropdown-item btn-primary text-light" >Sucre</button>
+                        <button class="dropdown-item btn-primary text-light" >Concombre</button>
+                        <button class="dropdown-item btn-primary text-light" >Lait de coco</button>
+                        <button class="dropdown-item btn-primary text-light" >Sucre</button>
+                        <button class="dropdown-item btn-primary text-light" >Concombre</button>
+                        <button class="dropdown-item btn-primary text-light" >Lait de coco</button>
+                        <button class="dropdown-item btn-primary text-light" >Sucre</button>
+                    </div>
                 </div>
-                <a class="dropdown-item" href="#">Lait de coco</a>
-                <a class="dropdown-item" href="#">Sucre</a>
-                <a class="dropdown-item" href="#">Concombre</a>
-                <a class="dropdown-item" href="#">Lait de coco</a>
-                <a class="dropdown-item" href="#">Sucre</a>
-                <a class="dropdown-item" href="#">Concombre</a>
-                <a class="dropdown-item" href="#">Lait de coco</a>
-                <a class="dropdown-item" href="#">Sucre</a>
-                <a class="dropdown-item" href="#">Concombre</a>
-                <a class="dropdown-item" href="#">Lait de coco</a>
-                <a class="dropdown-item" href="#">Sucre</a>
-                <a class="dropdown-item" href="#">Concombre</a>
-                <a class="dropdown-item" href="#">Lait de coco</a>
-                <a class="dropdown-item" href="#">Sucre</a>
             </div>
         </div>
+
+        <!-- <div class="dropdown mr-3">
+            <button class="btn btn-primary dropdown-toggle mb-3" type="button" data-toggle="collapse" data-target="#drop_Ing" aria-haspopup="true" aria-expanded="false">
+            Ingrédients
+            </button>
+        </div>
+        <div class="collapse bg-primary rounded mr-3 mb-3" id="drop_Ing" aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-container">
+                <div class="form mx-2">
+                    <input type="search" id="ingSearch" class="form-control border-0 bg-primary text-light" placeholder="Rechercher un ingrédient" aria-label="Search" />
+                </div>
+                <div class="choices">
+                    <button class="dropdown-item btn-primary text-light" >Lait de coco</button>
+                    <button class="dropdown-item btn-primary text-light" >Sucre</button>
+                    <button class="dropdown-item btn-primary text-light" >Concombre</button>
+                    <button class="dropdown-item btn-primary text-light" >Lait de coco</button>
+                    <button class="dropdown-item btn-primary text-light" >Sucre</button>
+                    <button class="dropdown-item btn-primary text-light" >Concombre</button>
+                    <button class="dropdown-item btn-primary text-light" >Lait de coco</button>
+                    <button class="dropdown-item btn-primary text-light" >Sucre</button>
+                    <button class="dropdown-item btn-primary text-light" >Concombre</button>
+                    <button class="dropdown-item btn-primary text-light" >Lait de coco</button>
+                    <button class="dropdown-item btn-primary text-light" >Sucre</button>
+                    <button class="dropdown-item btn-primary text-light" >Concombre</button>
+                    <button class="dropdown-item btn-primary text-light" >Lait de coco</button>
+                    <button class="dropdown-item btn-primary text-light" >Sucre</button>
+                </div>
+            </div>
+        </div> -->
+
         <div class="dropdown mr-3">
-            <button class="btn btn-success dropdown-toggle mb-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-success dropdown-toggle mb-3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Appareils
             </button>
-            <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
-                <div class="form-outline" >
-                    <input type="search" id="form1" class="form-control border-0" placeholder="Rechercher un ingrédient" aria-label="Search" />
+            <div class="dropdown-menu bg-success"  aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-container">
+                    <div class="form mx-2" >
+                        <input type="search" id="appareilsSearch" class="form-control border-0 bg-success text-light" placeholder="Rechercher un ingrédient" aria-label="Search" />
+                    </div>
+                    <div class="choices">
+                        <button class="dropdown-item btn-success text-light" >Lait de coco</button>
+                        <button class="dropdown-item btn-success text-light" >Sucre</button>
+                        <button class="dropdown-item btn-success text-light" >Concombre</button>
+                        <button class="dropdown-item btn-success text-light" >Lait de coco</button>
+                        <button class="dropdown-item btn-success text-light" >Sucre</button>
+                        <button class="dropdown-item btn-success text-light" >Concombre</button>
+                        <button class="dropdown-item btn-success text-light" >Lait de coco</button>
+                        <button class="dropdown-item btn-success text-light" >Sucre</button>
+                        <button class="dropdown-item btn-success text-light" >Concombre</button>
+                        <button class="dropdown-item btn-success text-light" >Lait de coco</button>
+                        <button class="dropdown-item btn-success text-light" >Sucre</button>
+                        <button class="dropdown-item btn-success text-light" >Concombre</button>
+                        <button class="dropdown-item btn-success text-light" >Lait de coco</button>
+                        <button class="dropdown-item btn-success text-light" >Sucre</button>
+                    </div>
                 </div>
-                <a class="dropdown-item" href="#">Lait de coco</a>
-                <a class="dropdown-item" href="#">Sucre</a>
-                <a class="dropdown-item" href="#">Concombre</a>
-                <a class="dropdown-item" href="#">Lait de coco</a>
-                <a class="dropdown-item" href="#">Sucre</a>
-                <a class="dropdown-item" href="#">Concombre</a>
-                <a class="dropdown-item" href="#">Lait de coco</a>
-                <a class="dropdown-item" href="#">Sucre</a>
-                <a class="dropdown-item" href="#">Concombre</a>
-                <a class="dropdown-item" href="#">Lait de coco</a>
-                <a class="dropdown-item" href="#">Sucre</a>
-                <a class="dropdown-item" href="#">Concombre</a>
-                <a class="dropdown-item" href="#">Lait de coco</a>
-                <a class="dropdown-item" href="#">Sucre</a>
             </div>
         </div>
         <div class="dropdown mr-3">
-            <button class="btn btn-danger dropdown-toggle mb-3" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-danger dropdown-toggle mb-3" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Ustensiles
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <div class="form-outline">
-                    <input type="search" id="form1" class="form-control border-0" placeholder="Rechercher un ingrédient" aria-label="Search" />
+            <div class="dropdown-menu bg-danger" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-container">
+                    <div class="form mx-2">
+                        <input type="search" id="ustensilesSearch" class="form-control border-0 bg-danger text-light" placeholder="Rechercher un ingrédient" aria-label="Search" />
+                    </div>
+                    <div class="choices">
+                        <button class="dropdown-item btn-danger text-light" >Lait de coco</button>
+                        <button class="dropdown-item btn-danger text-light" >Sucre</button>
+                        <button class="dropdown-item btn-danger text-light" >Concombre</button>
+                        <button class="dropdown-item btn-danger text-light" >Lait de coco</button>
+                        <button class="dropdown-item btn-danger text-light" >Sucre</button>
+                        <button class="dropdown-item btn-danger text-light" >Concombre</button>
+                        <button class="dropdown-item btn-danger text-light" >Lait de coco</button>
+                        <button class="dropdown-item btn-danger text-light" >Sucre</button>
+                        <button class="dropdown-item btn-danger text-light" >Concombre</button>
+                        <button class="dropdown-item btn-danger text-light" >Lait de coco</button>
+                        <button class="dropdown-item btn-danger text-light" >Sucre</button>
+                        <button class="dropdown-item btn-danger text-light" >Concombre</button>
+                        <button class="dropdown-item btn-danger text-light" >Lait de coco</button>
+                        <button class="dropdown-item btn-danger text-light" >Sucre</button>
+                    </div>
                 </div>
-                <a class="dropdown-item" href="#">Lait de coco</a>
-                <a class="dropdown-item" href="#">Sucre</a>
-                <a class="dropdown-item" href="#">Concombre</a>
-                <a class="dropdown-item" href="#">Lait de coco</a>
-                <a class="dropdown-item" href="#">Sucre</a>
-                <a class="dropdown-item" href="#">Concombre</a>
-                <a class="dropdown-item" href="#">Lait de coco</a>
-                <a class="dropdown-item" href="#">Sucre</a>
-                <a class="dropdown-item" href="#">Concombre</a>
-                <a class="dropdown-item" href="#">Lait de coco</a>
-                <a class="dropdown-item" href="#">Sucre</a>
-                <a class="dropdown-item" href="#">Concombre</a>
-                <a class="dropdown-item" href="#">Lait de coco</a>
-                <a class="dropdown-item" href="#">Sucre</a>
             </div>
         </div>
       </div>
 
-      <div class="container recetteCards mt-2 col-12 d-flex flex-wrap mx-auto justify-content-center" id="recettesContainer">
+      <div class="recetteCards mt-2 d-flex flex-wrap mx-auto justify-content-center" id="recettesContainer">
         <div class="card mx-4 mb-5" style="width: 342px;" >
             <img class="card-img-top" style="height: 150px; width: 100%; display: block; background-color : grey;" alt="">
             <div class="card-body">
@@ -223,5 +267,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
   </body>
 </html>
