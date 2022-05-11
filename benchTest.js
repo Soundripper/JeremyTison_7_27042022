@@ -1,14 +1,9 @@
 const forLoop = () =>{
-    let startDate = Date.now();
-    let names = [];
+    let recipesAll = [];
     for (let i = 0; i < recipes.length; i++) {
-        names.push(recipes[i].name);
+        recipesAll.push(recipes[i]);
     }
-    console.log(names);
-    let endDate = Date.now();
-    console.log(startDate);
-    console.log(endDate);
-    console.log(endDate - startDate);
+    console.log(recipesAll);
 }
 
 const forEachLoop = () =>{

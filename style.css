@@ -18,13 +18,20 @@ Body{
 .t7{
     font-size: 0.7em;
 }
+/* .dropdown-menu.show{
+    position : absolute;
+} */
+
+.btn.btn-primary:active
+{
+    background-color:grey !important; /* add here any color */
+}
 .choices{
-    width:50vw;
+    width:70vw;
     max-width: 600px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    
 }
 .dropdown-item{
     width: 150px;
@@ -37,4 +44,10 @@ Body{
 .hide{
     display: none;
 }
-
+.recipe-text{
+    overflow: hidden;
+    max-width:250px;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+}
