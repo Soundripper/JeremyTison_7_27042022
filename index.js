@@ -1,4 +1,8 @@
 ///////////////////////////////////////////////////////////////////////////////
+// GENERAL FILTER//
+let totalFilters = []
+
+///////////////////////////////////////////////////////////////////////////////
 // Gestionnaire Input main FILTER//
 const inputGeneral = document.querySelector('.search_General');
 // Boucle For //
@@ -22,6 +26,7 @@ const inputGeneral = document.querySelector('.search_General');
 const generalSearchValue = (event) => {
     let startDate = Date.now();
     resultInput = event.target.value;
+    console.log(resultInput);
     let elementsCard = document.getElementsByClassName('card');
     let arrCards = Array.from(elementsCard);
     // [...elements.forEach(element => {
@@ -66,17 +71,17 @@ dropMenus.forEach(dropMenu =>{
 })    
 
 ///////////////////////////////////////////////////////////////////////////////
-// Gestionnaire Tags //
+// Gestionnaire Ajout Tags //
 tagsWrapper = document.getElementById('filterBadges')
 btnTags = document.querySelectorAll('.dropdown-item');
 btnTags.forEach(e => {
     e.addEventListener('click', e => {
-        const ingName = e.target.innerHTML;
+        const itemName = e.target.innerHTML;
         newBtn = document.createElement('span');
         if (e.target.classList.contains('ing')) {
             newBtn.innerHTML = `
             <button type="button" class="btn btn-primary position-relative me-2 mb-2 tag">
-            ${ingName} &nbsp
+            <span> ${itemName} </span> &nbsp
             <i class="bi bi-x-circle"></i>
             </button>
         `
@@ -84,7 +89,7 @@ btnTags.forEach(e => {
         else if (e.target.classList.contains('app')) {
             newBtn.innerHTML = `
             <button type="button" class="btn btn-success position-relative me-2 mb-2 tag">
-            ${ingName} &nbsp
+            <span> ${itemName} </span> &nbsp
             <i class="bi bi-x-circle"></i>
             </button>
         `
@@ -92,7 +97,7 @@ btnTags.forEach(e => {
         else if (e.target.classList.contains('ust')) {
             newBtn.innerHTML = `
             <button type="button" class="btn btn-danger position-relative me-2 mb-2 tag">
-            ${ingName} &nbsp
+            <span> ${itemName} </span> &nbsp
             <i class="bi bi-x-circle"></i>
             </button>
         `
@@ -105,29 +110,69 @@ btnTags.forEach(e => {
 const tagUpdate = () => {
     tagsFiltering();
     activeTagsClose = document.querySelectorAll('.bi-x-circle');
-    activeTagsClose.forEach(e => {
-        e.addEventListener('click', (e) => {
+    activeTagsClose.forEach(elt => {
+        elt.addEventListener('click', (e) => {
+            tagspan = e.target.parentNode.querySelector('span');
+            tagName = tagspan.innerHTML;
+            tagName = tagName.trim();
+            // console.log(tagName);
+            totalFilters = totalFilters.filter(item => item !== tagName);
+            console.log(totalFilters);
             e.target.parentNode.remove(e.target);
-            tagUpdate();
+            tagsFiltering();
         })
+    
 })
 }
 
 ///////////////////////////////////////////////////////////////////////////////
 // Gestionnaire Tags FILTER//
 const tagsFiltering = () => {
-    let tagsFilters = []
-    let activeTags = document.querySelectorAll('.tag')
-    console.log(activeTags);
-    activeTags.forEach(tag => {
-        tagInner = tag.innerHTML;
-        tagsFilters.push(tagInner);
-        console.log(tagsFilters);
-    })
+    let activeTags = document.querySelectorAll('.tag');
+    // console.log(activeTags);
+    // console.log(arrCards);
+    if (activeTags.length > 0){
+        console.log("sup à 0");
+        activeTags.forEach(tag => {
+            let Card = document.getElementsByClassName('card');
+            let arrCards = Array.from(Card);
+            tagName = tag.querySelector('span');
+            tagInner = tagName.textContent;
+            tagInner = tagInner.trim();
+            totalFilters.push(tagInner);
+            totalFilters = [...new Set(totalFilters)];
+            // console.log(totalFilters);
+            totalFilters.forEach(tag => {
+                console.log(tag);
+                arrCards.forEach(Card => {
+                    if(Card.innerHTML.toLowerCase().includes(tag.toLowerCase())){
+                        Card.style.display = 'flex';
+                    }
+                    else {
+                        Card.style.display = 'none';
+                    }
+                });
+            })
+        })
+    }
+    else {
+        console.log("Pas sup à 0");
+        let Card = document.getElementsByClassName('card');
+        let arrCards = Array.from(Card);
+        totalFilters.push(' ');
+        totalFilters = [...new Set(totalFilters)];
+        totalFilters.forEach(tag => {
+                arrCards.forEach(Card => {
+                    if(Card.innerHTML.toLowerCase().includes(tag.toLowerCase())){
+                        Card.style.display = 'flex';
+                    }
+                    else {
+                        Card.style.display = 'none';
+                    }
+                });
+            })
+        }
 }
-
-
-
 
 ///////////////////////////////////////////////////////////////////////////////
 // Dropdowns manager //
@@ -160,4 +205,3 @@ dropBtns.forEach(
         )
     }
 )
-
