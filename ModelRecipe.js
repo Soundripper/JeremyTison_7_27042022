@@ -1,10 +1,11 @@
-class RecipeObj {
+class ModelRecipe {
     constructor(data) {
         this._id = data.id
         this._name = data.name
-        this._ingredients = data.ingredients.ingredient
-        this._quantity = data.ingredients.quantity
-        this._unit = data.ingredients.unit
+        this._servings = data.servings
+        this._ingredients = data.ingredients
+        // this._quantity = data.ingredients.quantity
+        // this._unit = data.ingredients.unit
         this._time = data.time
         this._description = data.description
         this._appliance = data.appliance

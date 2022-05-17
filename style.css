@@ -51,3 +51,10 @@ Body{
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
 }
+.card{
+    width: 440px;
+}
+.card-img-top{
+    height : 250px;
+    background-color: grey;
+}

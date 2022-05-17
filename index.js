@@ -23,25 +23,25 @@ const inputGeneral = document.querySelector('.search_General');
 // }
 
 // Boucle forEach //
-const generalSearchValue = (event) => {
-    let startDate = Date.now();
-    resultInput = event.target.value;
-    console.log(resultInput);
-    let elementsCard = document.getElementsByClassName('card');
-    let arrCards = Array.from(elementsCard);
-    // [...elements.forEach(element => {
-    arrCards.forEach(elementsCard => {
-            if(elementsCard.innerHTML.toLowerCase().includes(resultInput.toLowerCase())){
-                elementsCard.style.display = 'flex';
-            }
-            else{
-                elementsCard.style.display = 'none';
-            }
-    });
-    let endDate = Date.now();
-    console.log(endDate - startDate);
-}
-inputGeneral.addEventListener('input', generalSearchValue);
+// const generalSearchValue = (event) => {
+//     let startDate = Date.now();
+//     resultInput = event.target.value;
+//     console.log(resultInput);
+//     let elementsCard = document.getElementsByClassName('card');
+//     let arrCards = Array.from(elementsCard);
+//     // [...elements.forEach(element => {
+//     arrCards.forEach(elementsCard => {
+//             if(elementsCard.innerHTML.toLowerCase().includes(resultInput.toLowerCase())){
+//                 elementsCard.style.display = 'flex';
+//             }
+//             else{
+//                 elementsCard.style.display = 'none';
+//             }
+//     });
+//     let endDate = Date.now();
+//     console.log(endDate - startDate);
+// }
+// inputGeneral.addEventListener('input', generalSearchValue);
 
 ///////////////////////////////////////////////////////////////////////////////
 // Gestionnaire Input advanced FILTER//

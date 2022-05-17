@@ -4,22 +4,28 @@ class App {
         this.recipesAll = []
     }
     async recipesAllFunction() {
-        let recipesAll = []
-        for (let i = 0; i < recipes.length; i++) {
-            recipesAll.push(recipes[i]);
-        }
-        // console.log(recipesAll);
-        this.recipesAll = recipesAll;
-        
+        const Recipes = recipes.map(recipe => new RecipeFactory(recipe));
+        this.recipesAll = Recipes;
+        // let recipesAll = []
+        // for (let i = 0; i < recipes.length; i++) {
+        //     recipesAll.push(recipes[i]);
+        // }
+        // this.recipesAll = recipesAll;
     }
     async main() {
-        await this.recipesAllFunction()
+        await this.recipesAllFunction();
+        console.log(this.recipesAll);
+
+        const Search = new SearchForm(this.recipesAll)
+        Search.render()
+        
         this.recipesAll.forEach(recipe => {
             const Template = new TemplateCard(recipe)
             this.recipesWrapper.appendChild(
                 Template.createRecipeCard()
             )
         })
+        
     }
     
 }
