@@ -14,10 +14,13 @@ class App {
     }
     async main() {
         await this.recipesAllFunction();
-        console.log(this.recipesAll);
+        // console.log(this.recipesAll);
 
         const Search = new SearchForm(this.recipesAll)
         Search.render()
+
+        const AdvFilters = new IngAppUst(this.RecipesAll)
+        AdvFilters.render()
         
         this.recipesAll.forEach(recipe => {
             const Template = new TemplateCard(recipe)

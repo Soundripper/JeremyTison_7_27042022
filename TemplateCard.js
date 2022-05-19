@@ -33,7 +33,7 @@ class TemplateCard {
         recipeDescription.innerHTML = `${this._recipe.description}`;
         ingRow.appendChild(recipeDescription);
 
-        console.log(this._recipe.ingredients);
+        // console.log(this._recipe.ingredients);
         this._recipe.ingredients.forEach(ingredient => {
             // console.log(ingredient);
             const ing = document.createElement('div');
