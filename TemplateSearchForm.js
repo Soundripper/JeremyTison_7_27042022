@@ -15,10 +15,16 @@ class SearchForm {
         let SearchedRecipes = null
         // SearchedRecipes = this.RecipesSearch.search(query)
 
-        SearchedRecipes=this._recipes.filter(Recipes =>
-        Recipes.name.toLowerCase().includes(query.toLowerCase()))
-
+        SearchedRecipes = this._recipes.filter(Recipes =>
+        Recipes.name.toLowerCase().includes(query.toLowerCase())
+        ||Recipes.description.toLowerCase().includes(query.toLowerCase())
+        // ||Recipes.ingredients.toLowerCase().includes(query.toLowerCase())
+        )
+        console.log(SearchedRecipes);
+        const AdvFilters = new IngAppUst()
+        AdvFilters.renderFiltered(SearchedRecipes)
         this.displayRecipes(SearchedRecipes)
+        tagClick();
     }
 
 
