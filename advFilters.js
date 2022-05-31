@@ -1,4 +1,4 @@
-let totalFilters = [];
+// let totalFilters = [];
 
 ///////////////////////////////////////////////////////////////////////////////
 // Gestionnaire Input advanced FILTER//
@@ -71,7 +71,7 @@ const tagClickListen = () => {
 }
 
 const tagUpdate = () => {
-    tagsFiltering();
+    // tagsFiltering();
     activeTagsClose = document.querySelectorAll('.bi-x-circle');
     // console.log(activeTagsClose);
     activeTagsClose.forEach(elt => {
@@ -80,8 +80,8 @@ const tagUpdate = () => {
             // tagName = tagspan.innerHTML;
             let itemName = e.target.parentNode.querySelector('span').innerHTML;
             itemName = itemName.trim();
-            totalFilters = totalFilters.filter(item => item !== itemName);
-            console.log(totalFilters);
+            // totalFilters = totalFilters.filter(item => item !== itemName);
+            // console.log(totalFilters);
             if (e.target.parentNode.classList.contains('btn-primary')) {
                 console.log(e.target.parentNode);
                 wrapper = document.querySelector('.ingChoices');
@@ -91,7 +91,6 @@ const tagUpdate = () => {
                 btn.innerHTML = itemName;
                 console.log(itemName);
                 wrapper.appendChild(btn);
-                
             }
             else if (e.target.parentNode.classList.contains('btn-success')) {
                 wrapper = document.querySelector('.appChoices')
@@ -112,7 +111,7 @@ const tagUpdate = () => {
                 wrapper.appendChild(btn);
             }
             e.target.parentNode.parentNode.remove();
-            tagsFiltering();
+            // tagsFiltering();
             tagClickListen();
         })
     
