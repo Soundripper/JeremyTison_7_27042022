@@ -27,16 +27,22 @@ Body{
     background-color:grey !important; /* add here any color */
 }
 .choices{
-    width:70vw;
-    max-width: 600px;
+    /* width:70vw; */
+    max-width:800px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    padding : 10px;
 }
 .dropdown-item{
+    text-overflow: ellipsis;
+    overflow: hidden; 
     width: 150px;
     display: flex;
-    justify-items: center;
+    justify-content:flex-start;
+    white-space: nowrap;
+    padding-left : 15px;
+
 }
 .dropdown-item:hover{
     background-color: grey;

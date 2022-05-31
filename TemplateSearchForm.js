@@ -12,19 +12,21 @@ class SearchForm {
     }
 
     search(query) {
-        let SearchedRecipes = null
         // SearchedRecipes = this.RecipesSearch.search(query)
 
-        SearchedRecipes = this._recipes.filter(Recipes =>
-        Recipes.name.toLowerCase().includes(query.toLowerCase())
-        ||Recipes.description.toLowerCase().includes(query.toLowerCase())
-        // ||Recipes.ingredients.toLowerCase().includes(query.toLowerCase())
+        let searchedRecipes = this._recipes.filter(recipe => {
+            return (recipe.ingredients.filter(item => item.ingredient.toLowerCase().includes(query.toLowerCase())).length > 0) ||
+            recipe.name.toLowerCase().includes(query.toLowerCase()) ||
+            recipe.description.toLowerCase().includes(query.toLowerCase())
+        }
+        
         )
-        console.log(SearchedRecipes);
+        // console.log(searchedRecipes)
         const AdvFilters = new IngAppUst()
-        AdvFilters.renderFiltered(SearchedRecipes)
-        this.displayRecipes(SearchedRecipes)
-        tagClick();
+        AdvFilters.renderFiltered(searchedRecipes)
+        
+        this.displayRecipes(searchedRecipes)
+        tagClickListen();
     }
 
 
@@ -34,6 +36,7 @@ class SearchForm {
             const Template = new TemplateCard(Recipes)
             this.recettesCardsWrapper.appendChild(Template.createRecipeCard())
         })
+        
     }
 
     inputSearch() {
@@ -43,9 +46,12 @@ class SearchForm {
                 const query = e.target.value
 
                 if (query.length >= 3) {
-                    this.search(query)
-                } else if (query.length < 3) {
-                    this.displayRecipes(recipes)
+                    this.search(query);
+                } else  {
+                    this.displayRecipes(this._recipes);
+                    const AdvFilters = new IngAppUst();
+                    AdvFilters.renderFiltered(this._recipes);
+                    tagClickListen();
                 }
             })
     }

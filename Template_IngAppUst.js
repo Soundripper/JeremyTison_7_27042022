@@ -18,7 +18,7 @@ class IngAppUst{
         this._dropApp.innerHTML = ''
         this._dropUstBtnDiv.innerHTML = ''
         this._dropUst.innerHTML = ''
-        
+        //////Ing Button + Search
         this._dropIngBtnDiv.classList.add('dropdown', 'mr-3', 'dropIngBtnDiv')
         this._dropIngBtnDiv.innerHTML = `
             <button type="button" class="btn btn-primary dropdown-toggle mb-2 show" 
@@ -42,8 +42,7 @@ class IngAppUst{
             </div>
         `
         this._IngAppUstWrapper.appendChild(this._dropIng);
-
-
+        //////App Button + Search
         this._dropAppBtnDiv.classList.add('dropdown', 'mr-3', 'dropAppBtnDiv')
         this._dropAppBtnDiv.innerHTML = `
             <button type="button" class="btn btn-success dropdown-toggle mb-2 show" 
@@ -67,7 +66,7 @@ class IngAppUst{
             </div>
         `
         this._IngAppUstWrapper.appendChild(this._dropApp);
-
+        //////Ust Button + Search
         this._dropUstBtnDiv.classList.add('dropdown', 'mr-3', 'dropAppBtnDiv')
         this._dropUstBtnDiv.innerHTML = `
             <button type="button" class="btn btn-danger dropdown-toggle mb-2 show" 
@@ -92,56 +91,69 @@ class IngAppUst{
         `
         this._IngAppUstWrapper.appendChild(this._dropUst);
 
-        let ingredients = recipes.map(item => item.ingredients[0].ingredient);
-        ingredients = [...new Set(ingredients)];
-        const ingChoices = document.querySelector('.ingChoices');
-        ingChoices.innerHTML =''
-        ingredients.forEach(elt => {
-            const btn = document.createElement('button');
-            btn.classList.add('dropdown-item', 'btn-primary', 'bg-primary', 'text-light', 'ing');
-            btn.innerHTML = `${elt}`;
-            
-            ingChoices.appendChild(btn);
-        })
+        this.renderFiltered(recipes);
+        // console.log(recipes);
+        ///////////////// Ingredients Appareils Ustensiles => Populate init //////////////////////////
+        // let ingredients = [];
+        // recipes.forEach(item => {
+        //     item.ingredients.forEach(ingredient => ingredients.push(ingredient.ingredient));
+        // });
+        
+        // // ingredients = recipes.map(item => item.ingredients[0].ingredient);
+        // ingredients = [...new Set(ingredients)];
+        // const ingChoices = document.querySelector('.ingChoices');
+        // ingChoices.innerHTML ="";
+        // ingredients.forEach(elt => {
+        //     const btn = document.createElement('button');
+        //     btn.classList.add('dropdown-item', 'btn-primary', 'bg-primary', 'text-light', 'ing');
+        //     btn.innerHTML = `${elt}`;
+        //     ingChoices.appendChild(btn);
+        // })
 
-        let appareils = recipes.map(item => item.appliance);
-        appareils = [...new Set(appareils)];
-        const appChoices = document.querySelector('.appChoices');
-        appChoices.innerHTML =''
-        appareils.forEach(elt => {
-            const btn = document.createElement('button');
-            btn.classList.add('dropdown-item', 'btn-success', 'bg-success', 'text-light', 'app');
-            btn.innerHTML = `${elt}`;
+        // let appareils = recipes.map(item => item.appliance);
+        // appareils = [...new Set(appareils)];
+        // const appChoices = document.querySelector('.appChoices');
+        // appChoices.innerHTML =''
+        // appareils.forEach(elt => {
+        //     const btn = document.createElement('button');
+        //     btn.classList.add('dropdown-item', 'btn-success', 'bg-success', 'text-light', 'app');
+        //     btn.innerHTML = `${elt}`;
             
-            appChoices.appendChild(btn);
-        })
+        //     appChoices.appendChild(btn);
+        // })
 
-        let ustensils = recipes.map(item => item.ustensils);
-        let ustensilsFlat = "".split.call(ustensils, ",");
-        ustensilsFlat = [...new Set(ustensilsFlat)];
-        // console.log(ustensilsFlat);
-        const ustChoices = document.querySelector('.ustChoices');
-        ustChoices.innerHTML =''
-        ustensilsFlat.forEach(elt => {
-            const btn = document.createElement('button');
-            btn.classList.add('dropdown-item', 'btn-danger', 'bg-danger', 'text-light', 'ust');
-            btn.innerHTML = `${elt}`;
+        // let ustensils = recipes.map(item => item.ustensils);
+        // let ustensilsFlat = "".split.call(ustensils, ",");
+        // ustensilsFlat = [...new Set(ustensilsFlat)];
+        // // console.log(ustensilsFlat);
+        // const ustChoices = document.querySelector('.ustChoices');
+        // ustChoices.innerHTML =''
+        // ustensilsFlat.forEach(elt => {
+        //     const btn = document.createElement('button');
+        //     btn.classList.add('dropdown-item', 'btn-danger', 'bg-danger', 'text-light', 'ust');
+        //     btn.innerHTML = `${elt}`;
             
-            ustChoices.appendChild(btn);
-        })
+        //     ustChoices.appendChild(btn);
+        // })
 
     }
 
+    ///////////////// Ingredients Appareils Ustensiles => Populate from available recipes //////////////////////////
     renderFiltered(data){
-        let ingredients = data.map(item => item.ingredients[0].ingredient);
-        ingredients = [...new Set(ingredients)];
         const ingChoices = document.querySelector('.ingChoices');
-        ingChoices.innerHTML =''
+        
+        let ingredients = [];
+        ingChoices.innerHTML = "" ;
+        data.forEach(item => {
+            item.ingredients.forEach(ingredient => ingredients.push(ingredient.ingredient));
+        });
+        // console.log(ingredients);
+        ingredients = [...new Set(ingredients)];
+        // console.log(ingredients);
         ingredients.forEach(elt => {
             const btn = document.createElement('button');
             btn.classList.add('dropdown-item', 'btn-primary', 'bg-primary', 'text-light', 'ing');
             btn.innerHTML = `${elt}`;
-            
             ingChoices.appendChild(btn);
         })
 
@@ -153,7 +165,6 @@ class IngAppUst{
             const btn = document.createElement('button');
             btn.classList.add('dropdown-item', 'btn-success', 'bg-success', 'text-light', 'app');
             btn.innerHTML = `${elt}`;
-            
             appChoices.appendChild(btn);
         })
 
@@ -167,7 +178,6 @@ class IngAppUst{
             const btn = document.createElement('button');
             btn.classList.add('dropdown-item', 'btn-danger', 'bg-danger', 'text-light', 'ust');
             btn.innerHTML = `${elt}`;
-            
             ustChoices.appendChild(btn);
         })
 

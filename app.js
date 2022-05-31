@@ -2,15 +2,12 @@ class App {
     constructor() {
         this.recipesWrapper = document.querySelector('.recettesCardsWrapper')
         this.recipesAll = []
+        this.recipes = recipes;
+        this.recipesFiltered = []
     }
     async recipesAllFunction() {
-        const Recipes = recipes.map(recipe => new RecipeFactory(recipe));
+        const Recipes = this.recipes.map(recipe => new RecipeFactory(recipe));
         this.recipesAll = Recipes;
-        // let recipesAll = []
-        // for (let i = 0; i < recipes.length; i++) {
-        //     recipesAll.push(recipes[i]);
-        // }
-        // this.recipesAll = recipesAll;
     }
     async main() {
         await this.recipesAllFunction();
@@ -20,7 +17,7 @@ class App {
         Search.render()
 
         const AdvFilters = new IngAppUst(this.RecipesAll)
-        AdvFilters.render()
+        AdvFilters.render(this.RecipesAll)
         
         this.recipesAll.forEach(recipe => {
             const Template = new TemplateCard(recipe)
