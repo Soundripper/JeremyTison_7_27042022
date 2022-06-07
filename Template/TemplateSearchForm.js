@@ -26,7 +26,7 @@ class SearchForm {
         AdvFilters.renderFiltered(searchedRecipes)
         
         this.displayRecipes(searchedRecipes)
-        tagClickListen();
+        tagClickInit();
     }
 
 
@@ -51,7 +51,7 @@ class SearchForm {
                     this.displayRecipes(this._recipes);
                     const AdvFilters = new IngAppUst();
                     AdvFilters.renderFiltered(this._recipes);
-                    tagClickListen();
+                    tagClickInit();
                 }
             })
     }

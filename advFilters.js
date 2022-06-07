@@ -9,9 +9,9 @@ dropMenus.forEach(dropMenu =>{
     const advSearchValue = (event) => {
         const tagItems = dropMenu.querySelectorAll('.dropdown-item')
         resultInput = event.target.value;
-        console.log(resultInput)
+        // console.log(resultInput)
         const arrAdv = Array.from(tagItems);
-        console.log(tagItems);  
+        // console.log(tagItems);  
         arrAdv.forEach(elementsAdv => {
             if(elementsAdv.innerHTML.toLowerCase().includes(resultInput.toLowerCase())){
                 elementsAdv.style.display = 'flex';
@@ -65,16 +65,18 @@ const tagClickInit = () => {
             tagCloseAdd(newBtn);
             e.target.remove();
             filterBadgesWrapper.appendChild(newBtn);
+            tagsFiltering();
         })
     })
 }
 
 const tagClickAdd = (newBtn) => {
-    // tagsFiltering();
+    tagsFiltering();
     console.log("tagClickAdd");
     newBtn.addEventListener('click', (e) => {
             const itemName = e.target.innerHTML;
             const newBtn = document.createElement('span');
+            // totalFilters = totalFilters.filter(item => item !== itemName);
             if (e.target.classList.contains('ing')) {
                 newBtn.innerHTML = `
                 <button type="button" class="btn btn-primary position-relative me-2 mb-2 tag">
@@ -99,19 +101,21 @@ const tagClickAdd = (newBtn) => {
                 </button>
             `
             }
+            
             tagCloseAdd(newBtn);
             e.target.remove();
             filterBadgesWrapper.appendChild(newBtn);
-            // tagsFiltering();
+            tagsFiltering();
         })
     }
 
 const tagCloseAdd = (btn) => {
-    // tagsFiltering();
     console.log("tagCloseAdd");
+    tagsFiltering();
     btn.addEventListener('click', (e) => {
             let itemName = e.target.parentNode.querySelector('span').innerHTML;
             itemName = itemName.trim();
+            totalFilters = totalFilters.filter(item => item !== itemName);
             if (e.target.parentNode.classList.contains('btn-primary')) {
                 wrapper = document.querySelector('.ingChoices');
                 const btn = document.createElement('button');
@@ -125,7 +129,7 @@ const tagCloseAdd = (btn) => {
                 const btn = document.createElement('button');
                 btn.classList.add('dropdown-item', 'btn-success', 'bg-success', 'text-light', 'app');
                 btn.innerHTML = itemName;
-                console.log(itemName);
+                // console.log(itemName);
                 wrapper.appendChild(btn);
                 tagClickAdd(btn);
             }
@@ -134,15 +138,15 @@ const tagCloseAdd = (btn) => {
                 const btn = document.createElement('button');
                 btn.classList.add('dropdown-item', 'btn-danger', 'bg-danger', 'text-light', 'ust');
                 btn.innerHTML = itemName;
-                console.log(itemName);
+                // console.log(itemName);
                 wrapper.appendChild(btn);
                 tagClickAdd(btn);
             }
             e.target.parentNode.parentNode.remove();
-            // tagsFiltering();
-            
+            tagsFiltering();
         })
         
+            
 }
 
 tagClickInit();
@@ -152,8 +156,9 @@ tagClickInit();
 const tagsFiltering = () => {
     console.log("tagsFiltering");
     let activeTags = document.querySelectorAll('.tag');
+    console.log(activeTags);
     if (activeTags.length > 0){
-        // console.log("sup à 0");
+        console.log("sup à 0");
         activeTags.forEach(tag => {
             let Card = document.getElementsByClassName('card');
             let arrCards = Array.from(Card);
@@ -177,7 +182,7 @@ const tagsFiltering = () => {
         })
     }
     else {
-        // console.log("Pas sup à 0");
+        console.log("Pas sup à 0");
         let Card = document.getElementsByClassName('card');
         let arrCards = Array.from(Card);
         totalFilters =[];
