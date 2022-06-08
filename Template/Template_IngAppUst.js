@@ -92,49 +92,6 @@ class IngAppUst{
         this._IngAppUstWrapper.appendChild(this._dropUst);
 
         this.renderFiltered(recipes);
-        // console.log(recipes);
-        ///////////////// Ingredients Appareils Ustensiles => Populate init //////////////////////////
-        // let ingredients = [];
-        // recipes.forEach(item => {
-        //     item.ingredients.forEach(ingredient => ingredients.push(ingredient.ingredient));
-        // });
-        
-        // // ingredients = recipes.map(item => item.ingredients[0].ingredient);
-        // ingredients = [...new Set(ingredients)];
-        // const ingChoices = document.querySelector('.ingChoices');
-        // ingChoices.innerHTML ="";
-        // ingredients.forEach(elt => {
-        //     const btn = document.createElement('button');
-        //     btn.classList.add('dropdown-item', 'btn-primary', 'bg-primary', 'text-light', 'ing');
-        //     btn.innerHTML = `${elt}`;
-        //     ingChoices.appendChild(btn);
-        // })
-
-        // let appareils = recipes.map(item => item.appliance);
-        // appareils = [...new Set(appareils)];
-        // const appChoices = document.querySelector('.appChoices');
-        // appChoices.innerHTML =''
-        // appareils.forEach(elt => {
-        //     const btn = document.createElement('button');
-        //     btn.classList.add('dropdown-item', 'btn-success', 'bg-success', 'text-light', 'app');
-        //     btn.innerHTML = `${elt}`;
-            
-        //     appChoices.appendChild(btn);
-        // })
-
-        // let ustensils = recipes.map(item => item.ustensils);
-        // let ustensilsFlat = "".split.call(ustensils, ",");
-        // ustensilsFlat = [...new Set(ustensilsFlat)];
-        // // console.log(ustensilsFlat);
-        // const ustChoices = document.querySelector('.ustChoices');
-        // ustChoices.innerHTML =''
-        // ustensilsFlat.forEach(elt => {
-        //     const btn = document.createElement('button');
-        //     btn.classList.add('dropdown-item', 'btn-danger', 'bg-danger', 'text-light', 'ust');
-        //     btn.innerHTML = `${elt}`;
-            
-        //     ustChoices.appendChild(btn);
-        // })
 
     }
 
