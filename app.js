@@ -13,21 +13,21 @@ class App {
         await this.recipesAllFunction();
         // console.log(this.recipesAll);
 
-        const Search = new SearchForm(this.recipesAll)
+        this.recipesSubject = new RecipesSubject();
+        this.recipesResult = new RecipesObserver(this.recipesAll);
+        this.recipesSubject.subscribe(this.recipesResult);
+
+        const Search = new SearchForm(this.recipesSubject)
         Search.render()
 
-        const AdvFilters = new IngAppUst(this.RecipesAll)
-        AdvFilters.render(this.RecipesAll)
+        const AdvFilters = new IngAppUst(this.recipesSubject)
+        AdvFilters.render(this.recipesAll)
         
         this.recipesAll.forEach(recipe => {
-            const Template = new TemplateCard(recipe)
-            this.recipesWrapper.appendChild(
-                Template.createRecipeCard()
-            )
+        const Template = new TemplateCard(recipe)
+        this.recipesWrapper.appendChild(Template.createRecipeCard())
         })
-        
     }
-    
 }
 
 const app = new App()

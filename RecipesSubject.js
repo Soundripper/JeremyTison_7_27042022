@@ -5,6 +5,7 @@ class RecipesSubject {
 
     subscribe = (observer) => {
         this.observers.push(observer);
+        // console.log(this.observers);
     }
 
     run = (action) => {

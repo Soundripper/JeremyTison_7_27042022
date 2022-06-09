@@ -1,16 +1,17 @@
 class IngAppUst{
     constructor(data){
-        this._data = data
-        this._IngAppUstWrapper = document.getElementById('searchListsDropdowns')
-        this._dropIngBtnDiv = document.createElement('div')
-        this._dropIng = document.createElement('div')
-        this._dropAppBtnDiv = document.createElement('div')
-        this._dropApp = document.createElement('div')
-        this._dropUstBtnDiv = document.createElement('div')
-        this._dropUst = document.createElement('div')
+        this._data = data;
+        this._IngAppUstWrapper = document.getElementById('searchListsDropdowns');
+        this._dropIngBtnDiv = document.createElement('div');
+        this._dropIng = document.createElement('div');
+        this._dropAppBtnDiv = document.createElement('div');
+        this._dropApp = document.createElement('div');
+        this._dropUstBtnDiv = document.createElement('div');
+        this._dropUst = document.createElement('div');
     }
 
-    render(){
+    render(data){
+        // console.log(data);
         this._IngAppUstWrapper.innerHTML = ''
         this._dropIngBtnDiv.innerHTML = ''
         this._dropIng.innerHTML = ''
@@ -91,14 +92,15 @@ class IngAppUst{
         `
         this._IngAppUstWrapper.appendChild(this._dropUst);
 
-        this.renderFiltered(recipes);
+        this.renderFiltered(data);
 
     }
 
     ///////////////// Ingredients Appareils Ustensiles => Populate from available recipes //////////////////////////
     renderFiltered(data){
+        // console.log('render filtered');
+        // console.log(data);
         const ingChoices = document.querySelector('.ingChoices');
-        
         let ingredients = [];
         ingChoices.innerHTML = "" ;
         data.forEach(item => {

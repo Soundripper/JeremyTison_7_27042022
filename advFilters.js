@@ -1,4 +1,4 @@
-let totalFilters = [];
+// let totalFilters = [];
 
 ///////////////////////////////////////////////////////////////////////////////
 // Gestionnaire Input advanced FILTER//
@@ -30,7 +30,7 @@ dropMenus.forEach(dropMenu =>{
 ///////////////////////////////////////////////////////////////////////////////
 // Gestionnaire Ajout Tags //
 const tagClickInit = () => {
-    console.log("tagClickInit");
+    // console.log("tagClickInit");
     filterBadgesWrapper = document.getElementById('filterBadgesWrapper');
     btnTags = document.querySelectorAll('.dropdown-item');
     btnTags.forEach(elt => {
@@ -65,13 +65,13 @@ const tagClickInit = () => {
             tagCloseAdd(newBtn);
             e.target.remove();
             filterBadgesWrapper.appendChild(newBtn);
-            tagsFiltering();
+            // tagsFiltering();
         })
     })
 }
 
 const tagClickAdd = (newBtn) => {
-    tagsFiltering();
+    // tagsFiltering();
     console.log("tagClickAdd");
     newBtn.addEventListener('click', (e) => {
             const itemName = e.target.innerHTML;
@@ -105,17 +105,17 @@ const tagClickAdd = (newBtn) => {
             tagCloseAdd(newBtn);
             e.target.remove();
             filterBadgesWrapper.appendChild(newBtn);
-            tagsFiltering();
+            // tagsFiltering();
         })
     }
 
 const tagCloseAdd = (btn) => {
     console.log("tagCloseAdd");
-    tagsFiltering();
+    // tagsFiltering();
     btn.addEventListener('click', (e) => {
             let itemName = e.target.parentNode.querySelector('span').innerHTML;
             itemName = itemName.trim();
-            totalFilters = totalFilters.filter(item => item !== itemName);
+            // totalFilters = totalFilters.filter(item => item !== itemName);
             if (e.target.parentNode.classList.contains('btn-primary')) {
                 wrapper = document.querySelector('.ingChoices');
                 const btn = document.createElement('button');
@@ -143,7 +143,7 @@ const tagCloseAdd = (btn) => {
                 tagClickAdd(btn);
             }
             e.target.parentNode.parentNode.remove();
-            tagsFiltering();
+            // tagsFiltering();
         })
         
             
@@ -153,51 +153,51 @@ tagClickInit();
 
 ///////////////////////////////////////////////////////////////////////////////
 // Gestionnaire Tags FILTER//
-const tagsFiltering = () => {
-    console.log("tagsFiltering");
-    let activeTags = document.querySelectorAll('.tag');
-    console.log(activeTags);
-    if (activeTags.length > 0){
-        console.log("sup à 0");
-        activeTags.forEach(tag => {
-            let Card = document.getElementsByClassName('card');
-            let arrCards = Array.from(Card);
-            tagName = tag.querySelector('span');
-            tagInner = tagName.textContent;
-            tagInner = tagInner.trim();
-            totalFilters.push(tagInner);
-            totalFilters = [...new Set(totalFilters)];
-            console.log(totalFilters);
-            totalFilters.forEach(tag => {
-                // console.log(tag);
-                arrCards.forEach(Card => {
-                    if(Card.innerHTML.toLowerCase().includes(tag.toLowerCase())){
-                        Card.style.display = 'flex';
-                    }
-                    else {
-                        Card.style.display = 'none';
-                    }
-                });
-            })
-        })
-    }
-    else {
-        console.log("Pas sup à 0");
-        let Card = document.getElementsByClassName('card');
-        let arrCards = Array.from(Card);
-        totalFilters =[];
-        totalFilters.push(' ');
-        totalFilters = [...new Set(totalFilters)];
-        console.log(totalFilters);
-        totalFilters.forEach(tag => {
-            arrCards.forEach(Card => {
-                if(Card.innerHTML.toLowerCase().includes(tag.toLowerCase())){
-                    Card.style.display = 'flex';
-                }
-                else {
-                    Card.style.display = 'none';
-                }
-            });
-        })
-    }
-}
+// const tagsFiltering = () => {
+//     console.log("tagsFiltering");
+//     let activeTags = document.querySelectorAll('.tag');
+//     console.log(activeTags);
+//     if (activeTags.length > 0){
+//         console.log("sup à 0");
+//         activeTags.forEach(tag => {
+//             let Card = document.getElementsByClassName('card');
+//             let arrCards = Array.from(Card);
+//             tagName = tag.querySelector('span');
+//             tagInner = tagName.textContent;
+//             tagInner = tagInner.trim();
+//             totalFilters.push(tagInner);
+//             totalFilters = [...new Set(totalFilters)];
+//             console.log(totalFilters);
+//             totalFilters.forEach(tag => {
+//                 // console.log(tag);
+//                 arrCards.forEach(Card => {
+//                     if(Card.innerHTML.toLowerCase().includes(tag.toLowerCase())){
+//                         Card.style.display = 'flex';
+//                     }
+//                     else {
+//                         Card.style.display = 'none';
+//                     }
+//                 });
+//             })
+//         })
+//     }
+//     else {
+//         console.log("Pas sup à 0");
+//         let Card = document.getElementsByClassName('card');
+//         let arrCards = Array.from(Card);
+//         totalFilters =[];
+//         totalFilters.push(' ');
+//         totalFilters = [...new Set(totalFilters)];
+//         console.log(totalFilters);
+//         totalFilters.forEach(tag => {
+//             arrCards.forEach(Card => {
+//                 if(Card.innerHTML.toLowerCase().includes(tag.toLowerCase())){
+//                     Card.style.display = 'flex';
+//                 }
+//                 else {
+//                     Card.style.display = 'none';
+//                 }
+//             });
+//         })
+//     }
+// }
