@@ -20,8 +20,11 @@ class App {
         const Search = new SearchForm(this.recipesSubject)
         Search.render()
 
-        const AdvFilters = new IngAppUst(this.recipesSubject)
-        AdvFilters.render(this.recipesAll)
+        const AdvFiltersTemplate = new IngAppUst(this.recipesSubject)
+        AdvFiltersTemplate.render(this.recipesAll)
+
+        let AdvFiltersI = new AdvFilters(this.recipesSubject)
+        AdvFiltersI.tagClickInit(this.recipesSubject)
         
         this.recipesAll.forEach(recipe => {
         const Template = new TemplateCard(recipe)

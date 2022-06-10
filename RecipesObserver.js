@@ -9,7 +9,6 @@ class RecipesObserver {
     }
 
     update = (action) => {
-        // console.log(this.IngAppUstWrapper);
         this.recipesWrapper.innerHTML = "";
         switch (action.type) {
             case 'main_search':
@@ -34,50 +33,75 @@ class RecipesObserver {
                     console.log("Contient l'ingrédient :");
                     console.log(filteredRecipes);
                 }
-                    // let allFounded = arr2.every( ai => arr1.includes(ai) );    
-                    // res = arr1.filter(item => !arr2.includes(item));
                 filteredRecipes.forEach(recipe => {
                     const Template = new TemplateCard(recipe);
                     this.recipesWrapper.appendChild(Template.createRecipeCard());
                 })
                 // console.log(filteredRecipes);
-                const Template_IngAppUst = new IngAppUst(filteredRecipes);
+                let Template_IngAppUst = new IngAppUst(filteredRecipes);
                 Template_IngAppUst.renderFiltered(filteredRecipes);
                 break;
+
             case 'ingredient_search':
-                // this._listIngredients.push(action.value);
-                // this._defaultRecipes
-                //     .filter(recipe => {
-                //         const ingredients = recipe._ingredients.filter(ingredient => ingredient._ingredient === action.value);
-                //         let hasResult = false;
-                //         if (ingredients.length > 0) {
-                //             hasResult = true;
-                //         }
-                //         if (this._mainSearch.length > 0) {
-                //             hasResult = recipe._name.toLowerCase().includes(action.value.toLowerCase()) || recipe._description.toLowerCase().includes(action.value.toLowerCase());
-                //         }
+                console.log("case ingredient search");
+                if (this._listIngredients.includes(action.itemName)){
+                    console.log('includes itemName');
+                    this._listIngredients = this._listIngredients.filter(item => item !== action.itemName)
+                    console.log(this._listIngredients);
+                }
+                else {
+                    console.log('Does not include itemName');
+                    this._listIngredients.push(action.itemName);
+                    console.log(this._listIngredients);
+                }
+                if (this._listIngredients.length > 0) {
+                    console.log('ingredients sup 0');
+                    console.log(this._defaultRecipes);
+                    console.log(this._listIngredients);
+                    this._defaultRecipes = recipes;
+                    this._listIngredients.forEach(element => {
+                        this._defaultRecipes = this._defaultRecipes.filter(recipe => {
+                        return ((recipe.ingredients.filter(item => item.ingredient.includes(element))).length > 0)
+                    })
+                    })
+                    
+                    console.log("Contient l'ingrédient :");
+                    console.log(this._defaultRecipes);
+                }
+                if (this._listIngredients.length < 1) {
+                    console.log('ingredients inf 1');
+                    this._defaultRecipes = recipes;
+                    console.log(this._defaultRecipes);
+                    console.log(this._listIngredients);
+                }
+                if (this._mainSearch.length > 0) {
+                    this._defaultRecipes = this._defaultRecipes.filter(recipe => {
+                            return (recipe.ingredients.filter(item => item.ingredient.toLowerCase().includes(this._mainSearch.toLowerCase())).length > 0) ||
+                            recipe.name.toLowerCase().includes(this._mainSearch.toLowerCase()) ||
+                            recipe.description.toLowerCase().includes(this._mainSearch.toLowerCase())
+                        })
+                }
+                this._defaultRecipes.forEach(recipe => {
+                    const Template = new TemplateCard(recipe);
+                    this.recipesWrapper.appendChild(Template.createRecipeCard());
+                })
+                
+////////////////////////    
+                // let Template_IngAppUst2 = new IngAppUst(this._defaultRecipes);
+                // Template_IngAppUst2.renderFiltered(this._defaultRecipes);
+////////////////////////
 
-                //         if (hasResult) {
-                //             return recipe;
-                //         }
+////////////////////////
+                // let AdvFiltersVar = new AdvFilters(this._defaultRecipes);
+                // AdvFiltersVar.tagClickInit(this._defaultRecipes);
+/////////////////////////
 
-                //         return false;
-                //     })
-                //     .forEach(recipe => {
-                //         const Template = new RecipeCard(recipe);
-                //         this.recipesWrapper.appendChild(Template.createCard());
-                //     })
+
+
                 break;
             case 'ustensil_search':
                 break;
         }
-        tagClickInit();
+        
     }
 }
-
-
-// let searchedRecipes = this._recipes.filter(recipe => {
-//             return (recipe.ingredients.filter(item => item.ingredient.toLowerCase().includes(query.toLowerCase())).length > 0) ||
-//             recipe.name.toLowerCase().includes(query.toLowerCase()) ||
-//             recipe.description.toLowerCase().includes(query.toLowerCase())
-//         }

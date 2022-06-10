@@ -8,6 +8,7 @@ class IngAppUst{
         this._dropApp = document.createElement('div');
         this._dropUstBtnDiv = document.createElement('div');
         this._dropUst = document.createElement('div');
+        this.btn = null;
     }
 
     render(data){
@@ -110,10 +111,10 @@ class IngAppUst{
         ingredients = [...new Set(ingredients)];
         // console.log(ingredients);
         ingredients.forEach(elt => {
-            const btn = document.createElement('button');
-            btn.classList.add('dropdown-item', 'btn-primary', 'bg-primary', 'text-light', 'ing');
-            btn.innerHTML = `${elt}`;
-            ingChoices.appendChild(btn);
+            this.btn = document.createElement('button');
+            this.btn.classList.add('dropdown-item', 'btn-primary', 'bg-primary', 'text-light', 'ing');
+            this.btn.innerHTML = `${elt}`;
+            ingChoices.appendChild(this.btn);
         })
 
         let appareils = data.map(item => item.appliance);
@@ -139,7 +140,11 @@ class IngAppUst{
             btn.innerHTML = `${elt}`;
             ustChoices.appendChild(btn);
         })
-
+        ////////////////////////////////
+        // let AdvFiltersVar = new AdvFilters();
+        // AdvFiltersVar.tagClickAdd(this.btn);
+        // AdvFiltersVar.tagClickInit();
+        //////////////////////////////////
     }
 
 }

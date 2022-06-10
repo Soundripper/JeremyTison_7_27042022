@@ -45,5 +45,7 @@ class SearchForm {
         this.searchGeneral.innerHTML = searchForm;
         this.searchGeneralWrapper.appendChild(this.searchGeneral);
         this.inputSearch();
+        // const tagClickIni = new AdvFilters();
+        // tagClickIni.();
     }
 }
