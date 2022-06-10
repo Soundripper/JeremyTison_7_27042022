@@ -5,7 +5,7 @@ class RecipesObserver {
         this._defaultRecipes = defaultRecipes;
         this.filteredRecipes = [];
         this._mainSearch = '';
-        this._listIngredients = ['Concombre', 'Tomate']
+        this._listIngredients = []
     }
 
     update = (action) => {
