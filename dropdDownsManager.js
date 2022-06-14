@@ -30,3 +30,8 @@ dropBtns.forEach(
         )
     }
 )
+
+// document.addEventListener('click', (e)=> {
+//     console.log("Clicked element = ");
+//     console.log(e.target);
+// })

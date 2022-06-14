@@ -60,7 +60,7 @@ class IngAppUst{
         this._dropApp.innerHTML = `
             <div class="dropdown-container bg-success rounded">
                 <div class="form">
-                    <input type="search" id="ingSearch" class="form-control border-0 bg-success 
+                    <input type="search" id="appSearch" class="form-control border-0 bg-success 
                     text-light searchAdv" placeholder="Rechercher un appareil" aria-label="Search" />
                 </div>
                 <div class="choices appChoices">
@@ -84,7 +84,7 @@ class IngAppUst{
         this._dropUst.innerHTML = `
             <div class="dropdown-container bg-danger rounded">
                 <div class="form">
-                    <input type="search" id="ingSearch" class="form-control border-0 bg-danger 
+                    <input type="search" id="ustSearch" class="form-control border-0 bg-danger 
                     text-light searchAdv" placeholder="Rechercher un ustensile" aria-label="Search" />
                 </div>
                 <div class="choices ustChoices">
@@ -92,14 +92,16 @@ class IngAppUst{
             </div>
         `
         this._IngAppUstWrapper.appendChild(this._dropUst);
-
+        
         this.renderFiltered(data);
 
     }
 
     ///////////////// Ingredients Appareils Ustensiles => Populate from available recipes //////////////////////////
     renderFiltered(data){
-        // console.log('render filtered');
+        
+        
+        console.log('render filtered');
         // console.log(data);
         const ingChoices = document.querySelector('.ingChoices');
         let ingredients = [];
@@ -115,10 +117,6 @@ class IngAppUst{
             this.btn.classList.add('dropdown-item', 'btn-primary', 'bg-primary', 'text-light', 'ing');
             this.btn.innerHTML = `${elt}`;
             ingChoices.appendChild(this.btn);
-            ////////////////////////////////////////////////////
-            // let AdvFiltersVar = new AdvFilters();
-            // AdvFiltersVar.tagClickAdd(this.btn);
-            ////////////////////////////////////////////////////
         })
 
         let appareils = data.map(item => item.appliance);
@@ -126,29 +124,25 @@ class IngAppUst{
         const appChoices = document.querySelector('.appChoices');
         appChoices.innerHTML =''
         appareils.forEach(elt => {
-            const btn = document.createElement('button');
-            btn.classList.add('dropdown-item', 'btn-success', 'bg-success', 'text-light', 'app');
-            btn.innerHTML = `${elt}`;
-            appChoices.appendChild(btn);
+            this.btn = document.createElement('button');
+            this.btn.classList.add('dropdown-item', 'btn-success', 'bg-success', 'text-light', 'app');
+            this.btn.innerHTML = `${elt}`;
+            appChoices.appendChild(this.btn);
         })
 
         let ustensils = data.map(item => item.ustensils);
         let ustensilsFlat = "".split.call(ustensils, ",");
         ustensilsFlat = [...new Set(ustensilsFlat)];
         // console.log(ustensilsFlat);
+
         const ustChoices = document.querySelector('.ustChoices');
         ustChoices.innerHTML =''
         ustensilsFlat.forEach(elt => {
-            const btn = document.createElement('button');
-            btn.classList.add('dropdown-item', 'btn-danger', 'bg-danger', 'text-light', 'ust');
-            btn.innerHTML = `${elt}`;
-            ustChoices.appendChild(btn);
+            this.btn = document.createElement('button');
+            this.btn.classList.add('dropdown-item', 'btn-danger', 'bg-danger', 'text-light', 'ust');
+            this.btn.innerHTML = `${elt}`;
+            ustChoices.appendChild(this.btn);
         })
-        ////////////////////////////////
-        // let AdvFiltersVar = new AdvFilters();
-        // AdvFiltersVar.tagClickAdd(this.btn);
-        // AdvFiltersVar.tagClickInit();
-        //////////////////////////////////
     }
 
-}
+} 
