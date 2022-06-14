@@ -13,42 +13,55 @@ class RecipesObserver {
         switch (action.type) {
             case 'main_search':
                 this._mainSearch = action.value;
-                let filteredRecipes = this._defaultRecipes
+                console.log("Main search value :");
+                console.log(this._mainSearch);
+                this._defaultRecipes = recipes;
+                this._defaultRecipes = this._defaultRecipes
                     .filter(recipe => {
                         return (recipe.ingredients.filter(item => item.ingredient.toLowerCase().includes(action.value.toLowerCase())).length > 0) ||
                         recipe.name.toLowerCase().includes(action.value.toLowerCase()) ||
                         recipe.description.toLowerCase().includes(action.value.toLowerCase())
                     })
-                // console.log(filteredRecipes);
-                if (this._listIngredients.length > 1) {
+                console.log(this._defaultRecipes);
+                
+                if (this._listIngredients.length > 0) {
                     console.log('ingredients sup 0 => recettes filtrées par la recherche principale =');
-                    console.log(filteredRecipes);
+                    
                     console.log(this._listIngredients);
                     this._listIngredients.forEach(element => {
-                        filteredRecipes = filteredRecipes.filter(recipe => {
+                        this._defaultRecipes = this._defaultRecipes.filter(recipe => {
                         return ((recipe.ingredients.filter(item => item.ingredient.includes(element))).length > 0)
                     })
                     })
-                    
                     console.log("Contient l'ingrédient :");
-                    console.log(filteredRecipes);
+                    console.log(this._defaultRecipes);
                 }
-                filteredRecipes.forEach(recipe => {
+                this._defaultRecipes.forEach(recipe => {
                     const Template = new TemplateCard(recipe);
                     this.recipesWrapper.appendChild(Template.createRecipeCard());
                 })
-                // console.log(filteredRecipes);
-                let Template_IngAppUst = new IngAppUst(filteredRecipes);
-                Template_IngAppUst.renderFiltered(filteredRecipes);
+                
+                
+                ////////////////////////   Filtre les filtres
+                // let Template_IngAppUst = new IngAppUst(this._defaultRecipes);
+                // Template_IngAppUst.renderFiltered(this._defaultRecipes);
+
+                /////////////////////////// Tentative de récupération du click 
+                // let AdvFiltersVar = new AdvFilters(this._defaultRecipes);
+                // AdvFiltersVar.tagClickInit(this._defaultRecipes);
+                ///////////////////////////////////////////////////////////////////////////
+
                 break;
 
             case 'ingredient_search':
+                ////////////// si _listIngredients inclue le tag concerné
                 console.log("case ingredient search");
                 if (this._listIngredients.includes(action.itemName)){
                     console.log('includes itemName');
                     this._listIngredients = this._listIngredients.filter(item => item !== action.itemName)
                     console.log(this._listIngredients);
                 }
+                ////////////// si _listIngredients n'inclue pas le tag concerné
                 else {
                     console.log('Does not include itemName');
                     this._listIngredients.push(action.itemName);
@@ -82,23 +95,22 @@ class RecipesObserver {
                         })
                 }
                 this._defaultRecipes.forEach(recipe => {
-                    const Template = new TemplateCard(recipe);
-                    this.recipesWrapper.appendChild(Template.createRecipeCard());
+                const Template = new TemplateCard(recipe);
+                this.recipesWrapper.appendChild(Template.createRecipeCard());
                 })
-                
-////////////////////////    
+
+////////////////////////   Filtre les filtres en fonction des tags ajoutés  
                 // let Template_IngAppUst2 = new IngAppUst(this._defaultRecipes);
-                // Template_IngAppUst2.renderFiltered(this._defaultRecipes);
+                // Template_IngAppUst2.renderFiltered(this._defaultRecipes)
 ////////////////////////
 
-////////////////////////
+////////////////////////    Tentative de récupération du click 
                 // let AdvFiltersVar = new AdvFilters(this._defaultRecipes);
                 // AdvFiltersVar.tagClickInit(this._defaultRecipes);
+                // AdvFiltersVar.advFiltersSearchBar(this._defaultRecipes);
 /////////////////////////
-
-
-
                 break;
+                
             case 'ustensil_search':
                 break;
         }

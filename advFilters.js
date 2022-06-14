@@ -4,6 +4,7 @@ class AdvFilters{
         this.filterBadgesWrapper = null;
         this.btnTags = null;
         this.itemName = null;
+        this.resultInput = null;
     }
     ///////////////////////////////////////////////////////////////////////////////
     // Gestionnaire Input advanced FILTER//
@@ -14,12 +15,12 @@ class AdvFilters{
             const advSearch = dropMenu.querySelectorAll('.searchAdv')
             const advSearchValue = (event) => {
                 const tagItems = dropMenu.querySelectorAll('.dropdown-item')
-                resultInput = event.target.value;
+                this.resultInput = event.target.value;
                 // console.log(resultInput)
                 const arrAdv = Array.from(tagItems);
                 // console.log(tagItems);  
                 arrAdv.forEach(elementsAdv => {
-                    if(elementsAdv.innerHTML.toLowerCase().includes(resultInput.toLowerCase())){
+                    if(elementsAdv.innerHTML.toLowerCase().includes(this.resultInput.toLowerCase())){
                         elementsAdv.style.display = 'flex';
                     }
                     else{
@@ -151,6 +152,7 @@ class AdvFilters{
                 e.target.parentNode.parentNode.remove();
         })       
     }
+
     subjectRun = (subject) => {
         const itemName = this.itemName;
         subject.run(

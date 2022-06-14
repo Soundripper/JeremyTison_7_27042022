@@ -14,6 +14,7 @@ class SearchForm {
             .addEventListener('input', e => {
                 const query = e.target.value;
                 if (query.length >= 3) {
+                    console.log("main search sup à 3 char");
                     const value = e.target.value;
                     this.subject.run(
                         {
@@ -22,6 +23,7 @@ class SearchForm {
                         }
                     )
                 } else  {
+                    console.log("main search inf à 3 char");
                     this.subject.run(
                         {
                             'type': 'main_search',
@@ -45,7 +47,11 @@ class SearchForm {
         this.searchGeneral.innerHTML = searchForm;
         this.searchGeneralWrapper.appendChild(this.searchGeneral);
         this.inputSearch();
-        // const tagClickIni = new AdvFilters();
-        // tagClickIni.();
+
+        
+        /////////////////////////////////////////////////////////////////////////
+        // let AdvFiltersVar = new AdvFilters(this._defaultRecipes);
+        // AdvFiltersVar.tagClickInit(this._defaultRecipes);
+        ///////////////////////////////////////////////////////////////////////////
     }
 }

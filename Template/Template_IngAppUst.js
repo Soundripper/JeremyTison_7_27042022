@@ -115,6 +115,10 @@ class IngAppUst{
             this.btn.classList.add('dropdown-item', 'btn-primary', 'bg-primary', 'text-light', 'ing');
             this.btn.innerHTML = `${elt}`;
             ingChoices.appendChild(this.btn);
+            ////////////////////////////////////////////////////
+            // let AdvFiltersVar = new AdvFilters();
+            // AdvFiltersVar.tagClickAdd(this.btn);
+            ////////////////////////////////////////////////////
         })
 
         let appareils = data.map(item => item.appliance);

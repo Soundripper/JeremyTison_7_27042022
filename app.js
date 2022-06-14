@@ -25,6 +25,7 @@ class App {
 
         let AdvFiltersI = new AdvFilters(this.recipesSubject)
         AdvFiltersI.tagClickInit(this.recipesSubject)
+        AdvFiltersI.advFiltersSearchBar();
         
         this.recipesAll.forEach(recipe => {
         const Template = new TemplateCard(recipe)
