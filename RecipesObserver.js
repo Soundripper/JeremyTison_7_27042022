@@ -1,11 +1,13 @@
 class RecipesObserver {
-    constructor(defaultRecipes) {
+    constructor(defaultRecipes, advTemplate, advFilter) {
+        this.advtemplate = advTemplate;
+        this.advFilter = advFilter;
         this.recipesWrapper = document.querySelector('.recettesCardsWrapper');
         this.IngAppUstWrapper = document.getElementById('searchListsDropdowns');
         this._defaultRecipes = defaultRecipes;
-        this.filteredRecipes = [];
+        // this.filteredRecipes = [];
         this._mainSearch = '';
-        this._listIngredients = []
+        this._listIngredients = [];
     }
 
     update = (action) => {
@@ -44,10 +46,11 @@ class RecipesObserver {
                 
                 ////////////////////////   Filtre les filtres
                 // let Template_IngAppUst = new IngAppUst(this._defaultRecipes);
-                // Template_IngAppUst.renderFiltered(this._defaultRecipes);
+                this.advtemplate.renderFiltered(this._defaultRecipes);
 
                 /////////////////////////// Tentative de récupération du click 
                 // let AdvFiltersVar = new AdvFilters(this._defaultRecipes);
+                this.advFilter.tagClickInit(this._defaultRecipes);
                 // AdvFiltersVar.tagClickInit(this._defaultRecipes);
                 ///////////////////////////////////////////////////////////////////////////
 
@@ -98,17 +101,6 @@ class RecipesObserver {
                 const Template = new TemplateCard(recipe);
                 this.recipesWrapper.appendChild(Template.createRecipeCard());
                 })
-
-////////////////////////   Filtre les filtres en fonction des tags ajoutés  
-                // let Template_IngAppUst2 = new IngAppUst(this._defaultRecipes);
-                // Template_IngAppUst2.renderFiltered(this._defaultRecipes)
-////////////////////////
-
-////////////////////////    Tentative de récupération du click 
-                // let AdvFiltersVar = new AdvFilters(this._defaultRecipes);
-                // AdvFiltersVar.tagClickInit(this._defaultRecipes);
-                // AdvFiltersVar.advFiltersSearchBar(this._defaultRecipes);
-/////////////////////////
                 break;
                 
             case 'ustensil_search':

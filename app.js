@@ -14,17 +14,18 @@ class App {
         // console.log(this.recipesAll);
 
         this.recipesSubject = new RecipesSubject();
-        this.recipesResult = new RecipesObserver(this.recipesAll);
+        const AdvFiltersTemplate = new IngAppUst(this.recipesSubject);
+        let AdvFiltersI = new AdvFilters(this.recipesSubject);
+        this.recipesResult = new RecipesObserver(this.recipesAll, AdvFiltersTemplate, AdvFiltersI);
         this.recipesSubject.subscribe(this.recipesResult);
 
-        const Search = new SearchForm(this.recipesSubject)
+        const Search = new SearchForm(this.recipesSubject);
         Search.render()
 
-        const AdvFiltersTemplate = new IngAppUst(this.recipesSubject)
-        AdvFiltersTemplate.render(this.recipesAll)
-
-        let AdvFiltersI = new AdvFilters(this.recipesSubject)
-        AdvFiltersI.tagClickInit(this.recipesSubject)
+        
+        AdvFiltersTemplate.render(this.recipesAll);
+        
+        AdvFiltersI.tagClickInit(this.recipesSubject);
         AdvFiltersI.advFiltersSearchBar();
         
         this.recipesAll.forEach(recipe => {
