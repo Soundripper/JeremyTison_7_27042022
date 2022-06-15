@@ -83,7 +83,7 @@ class AdvFilters{
                 }
                 // console.log(newBtn);
                 this.tagCloseAdd(newBtn);
-                e.target.remove();
+                // e.target.remove();
                 filterBadgesWrapper.appendChild(newBtn);
             })
         })
@@ -103,7 +103,6 @@ class AdvFilters{
                 this.itemName = e.target.innerHTML;
                 const newBtn = document.createElement('span');
                 if (e.target.classList.contains('ing')) {
-                    
                     newBtn.innerHTML = `
                     <button type="button" class="btn btn-primary position-relative me-2 mb-2 tag">
                     <span> ${this.itemName} </span> &nbsp
@@ -184,6 +183,7 @@ class AdvFilters{
                 this.subjectRunUst(this.subject);
                 e.target.parentNode.parentNode.remove();
             }
+            
             // console.log(e.target.parentNode.parentNode);
             // e.target.parentNode.parentNode.remove();
         })    

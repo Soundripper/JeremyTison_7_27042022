@@ -67,18 +67,10 @@ class RecipesObserver {
                     const Template = new TemplateCard(recipe);
                     this.recipesWrapper.appendChild(Template.createRecipeCard());
                 })
-                
-                ////////////////////////   Filtre les filtres
-                // let Template_IngAppUst = new IngAppUst(this._defaultRecipes);
-                
+                                
                 this.advtemplate.renderFiltered(this._defaultRecipes);
                 this.advFilter.tagClickInit(this._defaultRecipes);
-
-                /////////////////////////// Tentative de récupération du click 
-                // let AdvFiltersVar = new AdvFilters(this._defaultRecipes);
-                // this.advFilter.tagClickInit(this._defaultRecipes);
-                // AdvFiltersVar.tagClickInit(this._defaultRecipes);
-                ///////////////////////////////////////////////////////////////////////////
+                this.filterTheFilters();
                 break;
 
             case 'ingredient_search':
@@ -104,7 +96,7 @@ class RecipesObserver {
                     this._listIngredients.forEach(element => {
                         this._defaultRecipes = this._defaultRecipes.filter(recipe => {
                         return ((recipe.ingredients.filter(item => item.ingredient.includes(element))).length > 0)
-                    })
+                        })
                     })
                     
                     console.log("Contient l'ingrédient :");
@@ -151,6 +143,7 @@ class RecipesObserver {
                 })
                 this.advtemplate.renderFiltered(this._defaultRecipes);
                 this.advFilter.tagClickInit(this._defaultRecipes);
+                this.filterTheFilters();
                 break;
                 
             case 'appareil_search':
@@ -225,6 +218,7 @@ class RecipesObserver {
                 })
                 this.advtemplate.renderFiltered(this._defaultRecipes);
                 this.advFilter.tagClickInit(this._defaultRecipes);
+                this.filterTheFilters();
                 break;
 
                 case 'ustensils_search':
@@ -285,7 +279,7 @@ class RecipesObserver {
                     this._listAppareils.forEach(element => {
                         this._defaultRecipes = this._defaultRecipes.filter(item => item.appliance.includes(element))
                     })
-                    
+
                     console.log("Contient l'appareil :");
                     console.log(this._defaultRecipes);
                 }
@@ -305,8 +299,35 @@ class RecipesObserver {
                 })
                 this.advtemplate.renderFiltered(this._defaultRecipes);
                 this.advFilter.tagClickInit(this._defaultRecipes);
+                this.filterTheFilters();
                 break;
         }
         
     }
+    
+    filterTheFilters = () => {
+        const tagItems = document.querySelectorAll('.dropdown-item')
+        let arrAdvToFilter = Array.from(tagItems);
+        arrAdvToFilter.forEach(elementsAdv => {
+            this._listIngredients.forEach(element => {
+                if(elementsAdv.innerHTML.toLowerCase().includes(element.toLowerCase())){
+                    // elementsAdv.style.display = 'none';
+                    elementsAdv.remove();
+                }
+            });
+            this._listAppareils.forEach(element => {
+                if(elementsAdv.innerHTML.toLowerCase().includes(element.toLowerCase())){
+                    // elementsAdv.style.display = 'none';
+                    elementsAdv.remove();
+                }
+            });
+            this._listUstensils.forEach(element => {
+                if(elementsAdv.innerHTML.toLowerCase().includes(element.toLowerCase())){
+                    // elementsAdv.style.display = 'none';
+                    elementsAdv.remove();
+                }
+            });
+        });
+    }
+    
 }
