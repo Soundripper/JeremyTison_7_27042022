@@ -20,6 +20,7 @@ class IngAppUst{
         this._dropApp.innerHTML = ''
         this._dropUstBtnDiv.innerHTML = ''
         this._dropUst.innerHTML = ''
+
         //////Ing Button + Search
         this._dropIngBtnDiv.classList.add('dropdown', 'mr-3', 'dropIngBtnDiv')
         this._dropIngBtnDiv.innerHTML = `
@@ -28,7 +29,7 @@ class IngAppUst{
                 data-target="#dropIng, #dropIngBtn" aria-haspopup="true" aria-expanded="false">
                 Ingrédients
             </button>
-        `
+        `;
         this._IngAppUstWrapper.appendChild(this._dropIngBtnDiv);
 
         this._dropIng.classList.add('collapse', 'bg-primary', 'mr-3', 'mb-2', 'rounded', 'dropCollapse')
@@ -42,8 +43,9 @@ class IngAppUst{
                 <div class="choices ingChoices">
                 </div>
             </div>
-        `
+        `;
         this._IngAppUstWrapper.appendChild(this._dropIng);
+
         //////App Button + Search
         this._dropAppBtnDiv.classList.add('dropdown', 'mr-3', 'dropAppBtnDiv')
         this._dropAppBtnDiv.innerHTML = `
@@ -52,7 +54,7 @@ class IngAppUst{
                 data-target="#dropApp, #dropAppBtn" aria-haspopup="true" aria-expanded="false">
                 Appareils
             </button>
-        `
+        `;
         this._IngAppUstWrapper.appendChild(this._dropAppBtnDiv);
 
         this._dropApp.classList.add('collapse', 'bg-success', 'mr-3', 'mb-2', 'rounded', 'dropCollapse')
@@ -66,8 +68,9 @@ class IngAppUst{
                 <div class="choices appChoices">
                 </div>
             </div>
-        `
+        `;
         this._IngAppUstWrapper.appendChild(this._dropApp);
+
         //////Ust Button + Search
         this._dropUstBtnDiv.classList.add('dropdown', 'mr-3', 'dropAppBtnDiv')
         this._dropUstBtnDiv.innerHTML = `
@@ -94,24 +97,19 @@ class IngAppUst{
         this._IngAppUstWrapper.appendChild(this._dropUst);
         
         this.renderFiltered(data);
-
     }
 
     ///////////////// Ingredients Appareils Ustensiles => Populate from available recipes //////////////////////////
     renderFiltered(data){
-        
-        
         console.log('render filtered');
-        // console.log(data);
         const ingChoices = document.querySelector('.ingChoices');
+
         let ingredients = [];
         ingChoices.innerHTML = "" ;
         data.forEach(item => {
             item.ingredients.forEach(ingredient => ingredients.push(ingredient.ingredient));
         });
-        // console.log(ingredients);
         ingredients = [...new Set(ingredients)];
-        // console.log(ingredients);
         ingredients.forEach(elt => {
             this.btn = document.createElement('button');
             this.btn.classList.add('dropdown-item', 'btn-primary', 'bg-primary', 'text-light', 'ing');
@@ -133,8 +131,6 @@ class IngAppUst{
         let ustensils = data.map(item => item.ustensils);
         let ustensilsFlat = "".split.call(ustensils, ",");
         ustensilsFlat = [...new Set(ustensilsFlat)];
-        // console.log(ustensilsFlat);
-
         const ustChoices = document.querySelector('.ustChoices');
         ustChoices.innerHTML =''
         ustensilsFlat.forEach(elt => {

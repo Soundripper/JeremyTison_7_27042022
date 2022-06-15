@@ -51,7 +51,7 @@ class AdvFilters{
 
         // console.log(this.btnTags);
         this.btnTags.forEach(elt => {
-            elt.addEventListener('mouseup', (e) => {
+            elt.addEventListener('click', (e) => {
                 this.itemName = e.target.innerHTML;
                 const newBtn = document.createElement('span');
                 if (e.target.classList.contains('ing')) {

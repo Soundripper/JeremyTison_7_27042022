@@ -31,7 +31,6 @@ class RecipesObserver {
                 
                 if (this._listIngredients.length > 0) {
                     console.log('ingredients sup 0 => recettes filtrées par la recherche principale =');
-                    
                     console.log(this._listIngredients);
                     this._listIngredients.forEach(element => {
                         this._defaultRecipes = this._defaultRecipes.filter(recipe => {
@@ -49,7 +48,6 @@ class RecipesObserver {
                     this._listAppareils.forEach(element => {
                         this._defaultRecipes = this._defaultRecipes.filter(item => item.appliance.includes(element))
                     })
-                    
                     console.log("Contient l'appareil :");
                     console.log(this._defaultRecipes);
                 }

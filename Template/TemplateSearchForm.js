@@ -42,16 +42,9 @@ class SearchForm {
                 <i class="bi bi-search" ></i>
             </span>
         </div>
-        `
-
+        `;
         this.searchGeneral.innerHTML = searchForm;
         this.searchGeneralWrapper.appendChild(this.searchGeneral);
         this.inputSearch();
-
-        
-        /////////////////////////////////////////////////////////////////////////
-        // let AdvFiltersVar = new AdvFilters(this._defaultRecipes);
-        // AdvFiltersVar.tagClickInit(this._defaultRecipes);
-        ///////////////////////////////////////////////////////////////////////////
     }
 }
