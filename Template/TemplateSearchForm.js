@@ -37,12 +37,18 @@ class SearchForm {
     render() {
         const searchForm = `
         <div class="input-group rounded col-12 mx-auto mt-3" id="searchBar">
-            <input type="search" class="form-control rounded bg-light search_General " placeholder="Rechercher une recette" aria-label="Search" aria-describedby="search-addon" />
-            <span class="searchIcon border-0" id="search-addon">
-                <i class="bi bi-search" ></i>
-            </span>
+            <input type="search" class="form-control rounded bg-light search_General" placeholder="Rechercher une recette" aria-label="Search" aria-describedby="search-addon" />
+            <span class="searchIcon border-0" id="search-addon"></span>
         </div>
         `;
+        // const searchForm = `
+        // <div class="input-group rounded col-12 mx-auto mt-3" id="searchBar">
+        //     <input type="search" class="form-control rounded bg-light search_General" placeholder="Rechercher une recette" aria-label="Search" aria-describedby="search-addon" />
+        //     <span class="searchIcon border-0" id="search-addon">
+        //         <i class="bi bi-search" ></i>
+        //     </span>
+        // </div>
+        // `;
         this.searchGeneral.innerHTML = searchForm;
         this.searchGeneralWrapper.appendChild(this.searchGeneral);
         this.inputSearch();

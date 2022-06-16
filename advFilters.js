@@ -38,7 +38,6 @@ class AdvFilters{
     ///////////////////////////////////////////////////////////////////////////////
     // Gestionnaire Ajout Tags //
     tagClickInit = () => {
-        // console.log("tagClickInit");
         this.filterBadgesWrapper = document.getElementById('filterBadgesWrapper');
         this.btnTags = document.querySelectorAll('.dropdown-item');
 
@@ -49,7 +48,6 @@ class AdvFilters{
         let ustSearch = document.getElementById('ustSearch');
         ustSearch.value = "";
 
-        // console.log(this.btnTags);
         this.btnTags.forEach(elt => {
             elt.addEventListener('click', (e) => {
                 this.itemName = e.target.innerHTML;
@@ -58,7 +56,7 @@ class AdvFilters{
                     newBtn.innerHTML = `
                     <button type="button" class="btn btn-primary position-relative me-2 mb-2 tag">
                     <span> ${this.itemName} </span> &nbsp
-                    <i class="bi bi-x-circle"></i>
+                    <i class="bi bi-x-circle xIng"></i>
                     </button>
                 `;
                 this.subjectRunIng(this.subject);
@@ -67,7 +65,7 @@ class AdvFilters{
                     newBtn.innerHTML = `
                     <button type="button" class="btn btn-success position-relative me-2 mb-2 tag">
                     <span> ${this.itemName} </span> &nbsp
-                    <i class="bi bi-x-circle"></i>
+                    <i class="bi bi-x-circle xApp"></i>
                     </button>
                 `;
                 this.subjectRunApp(this.subject);
@@ -76,14 +74,12 @@ class AdvFilters{
                     newBtn.innerHTML = `
                     <button type="button" class="btn btn-danger position-relative me-2 mb-2 tag">
                     <span> ${this.itemName} </span> &nbsp
-                    <i class="bi bi-x-circle"></i>
+                    <i class="bi bi-x-circle xUst"></i>
                     </button>
                 `;
                 this.subjectRunUst(this.subject);
                 }
-                // console.log(newBtn);
                 this.tagCloseAdd(newBtn);
-                // e.target.remove();
                 filterBadgesWrapper.appendChild(newBtn);
             })
         })
@@ -106,7 +102,7 @@ class AdvFilters{
                     newBtn.innerHTML = `
                     <button type="button" class="btn btn-primary position-relative me-2 mb-2 tag">
                     <span> ${this.itemName} </span> &nbsp
-                    <i class="bi bi-x-circle"></i>
+                    <i class="bi bi-x-circle xIng"></i>
                     </button>
                 `;
                 this.subjectRunIng(this.subject);
@@ -115,7 +111,7 @@ class AdvFilters{
                     newBtn.innerHTML = `
                     <button type="button" class="btn btn-success position-relative me-2 mb-2 tag">
                     <span> ${this.itemName} </span> &nbsp
-                    <i class="bi bi-x-circle"></i>
+                    <i class="bi bi-x-circle xApp"></i>
                     </button>
                 `;
                 this.subjectRunApp(this.subject);
@@ -124,7 +120,7 @@ class AdvFilters{
                     newBtn.innerHTML = `
                     <button type="button" class="btn btn-danger position-relative me-2 mb-2 tag">
                     <span> ${this.itemName} </span> &nbsp
-                    <i class="bi bi-x-circle"></i>
+                    <i class="bi bi-x-circle xUst"></i>
                     </button>
                 `;
                 this.subjectRunUst(this.subject);
@@ -132,8 +128,6 @@ class AdvFilters{
                 this.tagCloseAdd(newBtn);
                 
                 filterBadgesWrapper.appendChild(newBtn);
-                
-                // e.target.remove();
         })
     }
 
@@ -151,7 +145,8 @@ class AdvFilters{
             this.itemName = e.target.parentNode.querySelector('span').innerHTML;
             this.itemName = this.itemName.trim();
 
-            if (e.target.parentNode.classList.contains('btn-primary')) {
+            // if (e.target.parentNode.classList.contains('btn-primary')) {
+            if (e.target.classList.contains('xIng')) {
                 this.wrapper = document.querySelector('.ingChoices');
                 const btn = document.createElement('button');
                 btn.classList.add('dropdown-item', 'btn-primary', 'bg-primary', 'text-light', 'ing');
@@ -161,31 +156,26 @@ class AdvFilters{
                 this.subjectRunIng(this.subject);
                 e.target.parentNode.parentNode.remove();
             }
-            else if (e.target.parentNode.classList.contains('btn-success')) {
+            else if (e.target.classList.contains('xApp')) {
                 this.wrapper = document.querySelector('.appChoices')
                 const btn = document.createElement('button');
                 btn.classList.add('dropdown-item', 'btn-success', 'bg-success', 'text-light', 'app');
                 btn.innerHTML = this.itemName;
-                // console.log(itemName);
                 this.wrapper.appendChild(btn);
                 this.tagClickAdd(btn);
                 this.subjectRunApp(this.subject);
                 e.target.parentNode.parentNode.remove();
             }
-            else if (e.target.parentNode.classList.contains('btn-danger')) {
+            else if (e.target.classList.contains('xUst')) {
                 this.wrapper = document.querySelector('.ustChoices');
                 const btn = document.createElement('button');
                 btn.classList.add('dropdown-item', 'btn-danger', 'bg-danger', 'text-light', 'ust');
                 btn.innerHTML = this.itemName;
-                // console.log(itemName);
                 this.wrapper.appendChild(btn);
                 this.tagClickAdd(btn);
                 this.subjectRunUst(this.subject);
                 e.target.parentNode.parentNode.remove();
             }
-            
-            // console.log(e.target.parentNode.parentNode);
-            // e.target.parentNode.parentNode.remove();
         })    
     }
 

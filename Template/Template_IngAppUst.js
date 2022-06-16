@@ -101,9 +101,7 @@ class IngAppUst{
 
     ///////////////// Ingredients Appareils Ustensiles => Populate from available recipes //////////////////////////
     renderFiltered(data){
-        console.log('render filtered');
         const ingChoices = document.querySelector('.ingChoices');
-
         let ingredients = [];
         ingChoices.innerHTML = "" ;
         data.forEach(item => {

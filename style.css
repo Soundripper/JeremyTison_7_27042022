@@ -6,6 +6,10 @@ Body{
 .search_General{
     height: 60px;
 }
+.search_General.form-control::-webkit-input-placeholder {
+    color: black;
+    opacity: 0.5;
+}
 .searchIcon{
     line-height: 4rem;
     position: static;
@@ -18,9 +22,20 @@ Body{
 .t7{
     font-size: 0.7em;
 }
+.logoImg {
+    display: flex;
+    width: 30%;
+    min-width : 200px;
+    height: auto;
+}
+
 /* .dropdown-menu.show{
     position : absolute;
 } */
+
+.xIng, .xApp, .xUst{
+    z-index: 100;
+}
 
 .btn.btn-primary:active
 {
@@ -64,3 +79,8 @@ Body{
     height : 250px;
     background-color: grey;
 }
+.noResultMessage{
+    padding: 50px, 20px, 0px, 20px;
+}
+
+
