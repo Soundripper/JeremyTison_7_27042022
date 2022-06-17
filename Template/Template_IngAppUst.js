@@ -12,7 +12,6 @@ class IngAppUst{
     }
 
     render(data){
-        // console.log(data);
         this._IngAppUstWrapper.innerHTML = ''
         this._dropIngBtnDiv.innerHTML = ''
         this._dropIng.innerHTML = ''

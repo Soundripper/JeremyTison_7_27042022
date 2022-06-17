@@ -2,7 +2,6 @@ class SearchForm {
     constructor (subject) {
         // this._recipes = Recipes;
         this.subject = subject;
-        //this.RecipesSearch = new RecipesSearch(Recipes)
         this.searchGeneral = document.createElement('div')
         this.searchGeneralWrapper = document.querySelector('.search_General_wrapper')
         this.recettesCardsWrapper = document.querySelector('.recettesCardsWrapper')

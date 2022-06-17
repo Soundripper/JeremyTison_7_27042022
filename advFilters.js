@@ -11,15 +11,12 @@ class AdvFilters{
     advFiltersSearchBar = () => {
         console.log("advFiltersSearchBar");
         const dropMenus = document.querySelectorAll('.dropCollapse');
-        // console.log(dropMenus);
         dropMenus.forEach(dropMenu =>{
             const advSearch = dropMenu.querySelectorAll('.searchAdv')
             const advSearchValue = (event) => {
                 const tagItems = dropMenu.querySelectorAll('.dropdown-item')
                 this.resultInput = event.target.value;
-                // console.log(resultInput)
                 let arrAdv = Array.from(tagItems);
-                // console.log(tagItems); 
                 arrAdv.forEach(elementsAdv => {
                     if(elementsAdv.innerHTML.toLowerCase().includes(this.resultInput.toLowerCase())){
                         elementsAdv.style.display = 'flex';

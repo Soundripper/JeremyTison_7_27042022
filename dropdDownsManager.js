@@ -24,7 +24,6 @@ document.addEventListener("click", (e) => {
 });
 dropBtns.forEach(
     (elm) => elm.onclick = (e) => {
-        // console.log(elm)
         dropBtns.forEach((elm) => 
         elm.classList[e.target === elm ? 'add' : 'add']("show")
         )

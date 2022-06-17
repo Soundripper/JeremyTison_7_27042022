@@ -28,18 +28,13 @@ Body{
     min-width : 200px;
     height: auto;
 }
-
-/* .dropdown-menu.show{
-    position : absolute;
-} */
-
 .xIng, .xApp, .xUst{
     z-index: 100;
 }
 
 .btn.btn-primary:active
 {
-    background-color:grey !important; /* add here any color */
+    background-color:grey !important;
 }
 .choices{
     /* width:70vw; */

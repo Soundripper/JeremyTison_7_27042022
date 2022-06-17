@@ -1,7 +1,6 @@
 class SearchForm {
     constructor (Recipes) {
         this._recipes = Recipes
-        //this.RecipesSearch = new RecipesSearch(Recipes)
         this.searchGeneral = document.createElement('div')
         this.searchGeneralWrapper = document.querySelector('.search_General_wrapper')
         this.recettesCardsWrapper = document.querySelector('.recettesCardsWrapper')
@@ -12,8 +11,6 @@ class SearchForm {
     }
 
     search(query) {
-        // SearchedRecipes = this.RecipesSearch.search(query)
-
         let searchedRecipes = this._recipes.filter(recipe => {
             return (recipe.ingredients.filter(item => item.ingredient.toLowerCase().includes(query.toLowerCase())).length > 0) ||
             recipe.name.toLowerCase().includes(query.toLowerCase()) ||
@@ -21,7 +18,6 @@ class SearchForm {
         }
         
         )
-        // console.log(searchedRecipes)
         const AdvFilters = new IngAppUst()
         AdvFilters.renderFiltered(searchedRecipes)
         

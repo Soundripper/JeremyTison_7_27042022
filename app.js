@@ -11,7 +11,6 @@ class App {
     }
     async main() {
         await this.recipesAllFunction();
-        // console.log(this.recipesAll);
 
         this.recipesSubject = new RecipesSubject();
         const AdvFiltersTemplate = new IngAppUst(this.recipesSubject);
