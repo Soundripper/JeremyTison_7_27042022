@@ -142,7 +142,6 @@ class AdvFilters{
             this.itemName = e.target.parentNode.querySelector('span').innerHTML;
             this.itemName = this.itemName.trim();
 
-            // if (e.target.parentNode.classList.contains('btn-primary')) {
             if (e.target.classList.contains('xIng')) {
                 this.wrapper = document.querySelector('.ingChoices');
                 const btn = document.createElement('button');

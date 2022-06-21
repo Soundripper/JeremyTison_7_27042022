@@ -3,7 +3,7 @@ class App {
         this.recipesWrapper = document.querySelector('.recettesCardsWrapper')
         this.recipesAll = []
         this.recipes = recipes;
-        this.recipesFiltered = []
+        // this.recipesFiltered = []
     }
     async recipesAllFunction() {
         const Recipes = this.recipes.map(recipe => new RecipeFactory(recipe));
@@ -21,7 +21,6 @@ class App {
         const Search = new SearchForm(this.recipesSubject);
         Search.render()
 
-        
         AdvFiltersTemplate.render(this.recipesAll);
         
         AdvFiltersI.tagClickInit(this.recipesSubject);
