@@ -92,32 +92,14 @@ class RecipesObserver {
     }
 
     applyAll = (resultRecipes) => {
-        let startDate = Date.now();
         resultRecipes.forEach(recipe => {
             const Template = new TemplateCard(recipe);
             this.recipesWrapper.appendChild(Template.createRecipeCard());
             })
-        let endDate = Date.now();
-        console.log("applyAll Time = ");
-        console.log(endDate - startDate);
         this.advtemplate.renderFiltered(this._defaultRecipes);
         this.advFilter.tagClickInit(this._defaultRecipes);
         this.filterTheFilters();
     }
-
-    // applyAll = (resultRecipes) => {
-    //     let startDate = Date.now();
-    //     for (let i = 0; i < resultRecipes.length; i++) {
-    //         const Template = new TemplateCard(resultRecipes[i]);
-    //         this.recipesWrapper.appendChild(Template.createRecipeCard());
-    //     }
-    //     let endDate = Date.now();
-    //     console.log("Time = ");
-    //     console.log(endDate - startDate);
-    //     this.advtemplate.renderFiltered(this._defaultRecipes);
-    //     this.advFilter.tagClickInit(this._defaultRecipes);
-    //     this.filterTheFilters();
-    // }
 
     filterCascade = () => {
         this._defaultRecipes = recipes;
