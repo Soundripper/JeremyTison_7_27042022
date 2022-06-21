@@ -8,6 +8,9 @@ class RecipesSubject {
     }
 
     run = (action) => {
-        this.observers.forEach(observer => observer.update(action));
+        for(let i=0; i<this.observers.length; i++){
+            this.observers[i].update(action)
+        }
+        // this.observers.forEach(observer => observer.update(action));
     }
 }
