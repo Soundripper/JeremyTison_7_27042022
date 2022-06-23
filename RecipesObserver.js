@@ -181,20 +181,14 @@ class RecipesObserver {
             this._defaultRecipes = this.filteredRecipes;
         }
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         if (this._listIngredients.length > 0) {
             this._listIngredients.forEach(element => {
                 this._defaultRecipes = this._defaultRecipes.filter(recipe => {
                 return ((recipe.ingredients.filter(item => item.ingredient.includes(element))).length > 0)
                 })
-            })
-            
-            
-
-            
+            })            
         }
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+  
         if (this._listAppareils.length > 0) {
             // this.filteredRecipes = this._defaultRecipes;
             // this._listAppareils.forEach(element => {
@@ -216,12 +210,14 @@ class RecipesObserver {
             // this._listUstensils.forEach(element => {
             //     this._defaultRecipes = this._defaultRecipes.filter(item => item.ustensils.includes(element))
             // })
-            for (let i=0; i<this._listUstensils.length; i++){
-                for (let j=0; j<this._defaultRecipes.length; j++){
-                    if (this._defaultRecipes[j].ustensils.includes(this._listUstensils[i])){
-                        // this._defaultRecipes = this._defaultRecipes.slice(j,1);
-                        console.log(this._defaultRecipes[j]);
-                        this.filteredRecipes.push(this._defaultRecipes[j]);
+            for (let j=0; j<this._defaultRecipes.length; j++){
+                for (let k=0; k<this._defaultRecipes[j].ustensils.length; k++){
+                    for (let i=0; i<this._listUstensils.length; i++){
+                        if (this._defaultRecipes[j].ustensils[k].includes(this._listUstensils[i])){
+                            // this._defaultRecipes = this._defaultRecipes.slice(j,1);
+                            console.log(this._defaultRecipes[j]);
+                            this.filteredRecipes.push(this._defaultRecipes[j]);
+                        }
                     }
                 }
             }   
