@@ -8,28 +8,51 @@ class AdvFilters{
     }
     ///////////////////////////////////////////////////////////////////////////////
     // Gestionnaire Input advanced FILTER//
+    // advFiltersSearchBar = () => {
+    //     // console.log("advFiltersSearchBar");
+    //     const dropMenus = document.querySelectorAll('.dropCollapse');
+    //     dropMenus.forEach(dropMenu =>{
+    //         const advSearch = dropMenu.querySelectorAll('.searchAdv')
+    //         const advSearchValue = (event) => {
+    //             const tagItems = dropMenu.querySelectorAll('.dropdown-item')
+    //             this.resultInput = event.target.value;
+    //             let arrAdv = Array.from(tagItems);
+    //             arrAdv.forEach(elementsAdv => {
+    //                 if(elementsAdv.innerHTML.toLowerCase().includes(this.resultInput.toLowerCase())){
+    //                     elementsAdv.style.display = 'flex';
+    //                 }
+    //                 else{
+    //                     elementsAdv.style.display = 'none';
+    //                 }
+    //             });
+    //         }
+    //         advSearch.forEach(e => {
+    //             e.addEventListener('input', advSearchValue)
+    //         })
+    //     })    
+    // }
     advFiltersSearchBar = () => {
-        console.log("advFiltersSearchBar");
+        // console.log("advFiltersSearchBar");
         const dropMenus = document.querySelectorAll('.dropCollapse');
-        dropMenus.forEach(dropMenu =>{
-            const advSearch = dropMenu.querySelectorAll('.searchAdv')
+        for (let i=0; i<dropMenus.length; i++){
+            const advSearch = dropMenus[i].querySelectorAll('.searchAdv')
             const advSearchValue = (event) => {
-                const tagItems = dropMenu.querySelectorAll('.dropdown-item')
+                const tagItems = dropMenus[i].querySelectorAll('.dropdown-item')
                 this.resultInput = event.target.value;
                 let arrAdv = Array.from(tagItems);
-                arrAdv.forEach(elementsAdv => {
-                    if(elementsAdv.innerHTML.toLowerCase().includes(this.resultInput.toLowerCase())){
-                        elementsAdv.style.display = 'flex';
+                for (let i=0; i<arrAdv.length; i++){
+                    if(arrAdv[i].innerHTML.toLowerCase().includes(this.resultInput.toLowerCase())){
+                        arrAdv[i].style.display = 'flex';
                     }
                     else{
-                        elementsAdv.style.display = 'none';
+                        arrAdv[i].style.display = 'none';
                     }
-                });
+                }
             }
-            advSearch.forEach(e => {
-                e.addEventListener('input', advSearchValue)
-            })
-        })    
+            for (let i=0; i<advSearch.length; i++){
+                advSearch[i].addEventListener('input', advSearchValue)
+            }
+        }  
     }
 
     ///////////////////////////////////////////////////////////////////////////////
@@ -45,8 +68,43 @@ class AdvFilters{
         let ustSearch = document.getElementById('ustSearch');
         ustSearch.value = "";
 
-        this.btnTags.forEach(elt => {
-            elt.addEventListener('click', (e) => {
+        // this.btnTags.forEach(elt => {
+        //     elt.addEventListener('click', (e) => {
+        //         this.itemName = e.target.innerHTML;
+        //         const newBtn = document.createElement('span');
+        //         if (e.target.classList.contains('ing')) {
+        //             newBtn.innerHTML = `
+        //             <button type="button" class="btn btn-primary position-relative me-2 mb-2 tag">
+        //             <span> ${this.itemName} </span> &nbsp
+        //             <i class="bi bi-x-circle xIng"></i>
+        //             </button>
+        //         `;
+        //         this.subjectRunIng(this.subject);
+        //         }
+        //         else if (e.target.classList.contains('app')) {
+        //             newBtn.innerHTML = `
+        //             <button type="button" class="btn btn-success position-relative me-2 mb-2 tag">
+        //             <span> ${this.itemName} </span> &nbsp
+        //             <i class="bi bi-x-circle xApp"></i>
+        //             </button>
+        //         `;
+        //         this.subjectRunApp(this.subject);
+        //         }
+        //         else if (e.target.classList.contains('ust')) {
+        //             newBtn.innerHTML = `
+        //             <button type="button" class="btn btn-danger position-relative me-2 mb-2 tag">
+        //             <span> ${this.itemName} </span> &nbsp
+        //             <i class="bi bi-x-circle xUst"></i>
+        //             </button>
+        //         `;
+        //         this.subjectRunUst(this.subject);
+        //         }
+        //         this.tagCloseAdd(newBtn);
+        //         filterBadgesWrapper.appendChild(newBtn);
+        //     })
+        // })
+        for(let i=0; i<this.btnTags.length; i++){
+            this.btnTags[i].addEventListener('click', (e) => {
                 this.itemName = e.target.innerHTML;
                 const newBtn = document.createElement('span');
                 if (e.target.classList.contains('ing')) {
@@ -79,7 +137,7 @@ class AdvFilters{
                 this.tagCloseAdd(newBtn);
                 filterBadgesWrapper.appendChild(newBtn);
             })
-        })
+        }
     }
 
     tagClickAdd = (newBtn) => {
@@ -129,7 +187,7 @@ class AdvFilters{
     }
 
     tagCloseAdd = (btn) => {
-        console.log("tagCloseAdd");
+        // console.log("tagCloseAdd");
         btn.addEventListener('click', (e) => {
 
             let ingSearch = document.getElementById('ingSearch');

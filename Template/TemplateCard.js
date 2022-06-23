@@ -33,15 +33,24 @@ class TemplateCard {
         recipeDescription.innerHTML = `${this._recipe.description}`;
         ingRow.appendChild(recipeDescription);
 
-        this._recipe.ingredients.forEach(ingredient => {
+        // this._recipe.ingredients.forEach(ingredient => {
+        //     const ing = document.createElement('div');
+        //     ing.classList.add('t7', 'd-flex', 'justify-items-around');
+        //     ing.innerHTML += `
+        //         <p class="card-text fw-bolder m-0 ingredient">${ingredient.ingredient}: &nbsp</p>
+        //         <p class="card-text"> ${ingredient.quantity} ${ingredient.unit} </p>
+        //     `;
+        //     ingWrapper.appendChild(ing);
+        // });
+        for (let i=0; i<this._recipe.ingredients.length; i++){
             const ing = document.createElement('div');
             ing.classList.add('t7', 'd-flex', 'justify-items-around');
             ing.innerHTML += `
-                <p class="card-text fw-bolder m-0 ingredient">${ingredient.ingredient}: &nbsp</p>
-                <p class="card-text"> ${ingredient.quantity} ${ingredient.unit} </p>
+                <p class="card-text fw-bolder m-0 ingredient">${this._recipe.ingredients[i].ingredient}: &nbsp</p>
+                <p class="card-text"> ${this._recipe.ingredients[i].quantity} ${this._recipe.ingredients[i].unit} </p>
             `;
             ingWrapper.appendChild(ing);
-        });
+        }
         
         return this.cardWrapper;
     }

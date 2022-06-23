@@ -103,39 +103,71 @@ class IngAppUst{
         const ingChoices = document.querySelector('.ingChoices');
         let ingredients = [];
         ingChoices.innerHTML = "" ;
-        data.forEach(item => {
-            item.ingredients.forEach(ingredient => ingredients.push(ingredient.ingredient));
-        });
+        // data.forEach(item => {
+        //     item.ingredients.forEach(ingredient => ingredients.push(ingredient.ingredient));
+        // });
+        for (let i=0; i<data.length; i++){
+            for (let j=0; j<data[i].ingredients.length; j++){
+                ingredients.push(data[i].ingredients[j].ingredient);
+            }
+        }
         ingredients = [...new Set(ingredients)];
-        ingredients.forEach(elt => {
+        // console.log(ingredients);
+        // ingredients.forEach(elt => {
+        //     this.btn = document.createElement('button');
+        //     this.btn.classList.add('dropdown-item', 'btn-primary', 'bg-primary', 'text-light', 'ing');
+        //     this.btn.innerHTML = `${elt}`;
+        //     ingChoices.appendChild(this.btn);
+        // })
+        for (let i=0; i<ingredients.length; i++){
             this.btn = document.createElement('button');
             this.btn.classList.add('dropdown-item', 'btn-primary', 'bg-primary', 'text-light', 'ing');
-            this.btn.innerHTML = `${elt}`;
+            this.btn.innerHTML = `${ingredients[i]}`;
             ingChoices.appendChild(this.btn);
-        })
+        }
 
-        let appareils = data.map(item => item.appliance);
+        let appareils = [];
+        // let appareils = data.map(item => item.appliance);
+        for (let i=0; i<data.length; i++){
+            appareils.push(data[i].appliance);
+        }
         appareils = [...new Set(appareils)];
         const appChoices = document.querySelector('.appChoices');
         appChoices.innerHTML =''
-        appareils.forEach(elt => {
+        // appareils.forEach(elt => {
+        //     this.btn = document.createElement('button');
+        //     this.btn.classList.add('dropdown-item', 'btn-success', 'bg-success', 'text-light', 'app');
+        //     this.btn.innerHTML = `${elt}`;
+        //     appChoices.appendChild(this.btn);
+        // })
+        for (let i=0; i<appareils.length; i++){
             this.btn = document.createElement('button');
             this.btn.classList.add('dropdown-item', 'btn-success', 'bg-success', 'text-light', 'app');
-            this.btn.innerHTML = `${elt}`;
+            this.btn.innerHTML = `${appareils[i]}`;
             appChoices.appendChild(this.btn);
-        })
+        }
 
-        let ustensils = data.map(item => item.ustensils);
+        let ustensils = [];
+        // let ustensils = data.map(item => item.ustensils);
+        for (let i=0; i<data.length; i++){
+            ustensils.push(data[i].ustensils);
+        }
         let ustensilsFlat = "".split.call(ustensils, ",");
         ustensilsFlat = [...new Set(ustensilsFlat)];
         const ustChoices = document.querySelector('.ustChoices');
         ustChoices.innerHTML =''
-        ustensilsFlat.forEach(elt => {
+        // ustensilsFlat.forEach(elt => {
+        //     this.btn = document.createElement('button');
+        //     this.btn.classList.add('dropdown-item', 'btn-danger', 'bg-danger', 'text-light', 'ust');
+        //     this.btn.innerHTML = `${elt}`;
+        //     ustChoices.appendChild(this.btn);
+        // })
+        for (let i=0; i<ustensilsFlat.length; i++){
             this.btn = document.createElement('button');
             this.btn.classList.add('dropdown-item', 'btn-danger', 'bg-danger', 'text-light', 'ust');
-            this.btn.innerHTML = `${elt}`;
+            this.btn.innerHTML = `${ustensilsFlat[i]}`;
             ustChoices.appendChild(this.btn);
-        })
+        }
     }
 
 } 

@@ -13,7 +13,7 @@ class SearchForm {
             .addEventListener('input', e => {
                 const query = e.target.value;
                 if (query.length >= 3) {
-                    console.log("main search sup à 3 char");
+                    // console.log("main search sup à 3 char");
                     const value = e.target.value;
                     this.subject.run(
                         {
@@ -22,7 +22,7 @@ class SearchForm {
                         }
                     )
                 } else  {
-                    console.log("main search inf à 3 char");
+                    // console.log("main search inf à 3 char");
                     this.subject.run(
                         {
                             'type': 'main_search',
