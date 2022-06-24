@@ -157,7 +157,7 @@ class RecipesObserver {
         this.advFilter.tagClickInit(this._defaultRecipes);
         this.filterTheFilters();
         endDate = Date.now();
-        testTime();
+        // testTime();
     }
 
     filterCascade = () => {
@@ -221,10 +221,8 @@ class RecipesObserver {
                 for (let j=0; j<this._defaultRecipes.length; j++){
                         if (this._defaultRecipes[j].ustensils.includes(this._listUstensils[i])){
                             this.filteredRecipes.push(this._defaultRecipes[j]);
-                            // this._defaultRecipes = this.filteredRecipes;
                         }
                     }
-                
             }   
             this.filteredRecipes = [...new Set(this.filteredRecipes)];
             this._defaultRecipes = this.filteredRecipes;
