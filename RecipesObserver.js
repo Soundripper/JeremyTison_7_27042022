@@ -17,6 +17,7 @@ class RecipesObserver {
         this.recipesWrapper.innerHTML = "";
         switch (action.type) {
             case 'main_search':
+                startDate = Date.now();
                 this._mainSearch = action.value;
                 this.filterCascade();
                 this.applyAll(this._defaultRecipes);
@@ -99,6 +100,8 @@ class RecipesObserver {
         this.advtemplate.renderFiltered(this._defaultRecipes);
         this.advFilter.tagClickInit(this._defaultRecipes);
         this.filterTheFilters();
+        endDate = Date.now();
+        testTime();
     }
 
     filterCascade = () => {
