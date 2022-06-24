@@ -141,7 +141,7 @@ class AdvFilters{
     }
 
     tagClickAdd = (newBtn) => {
-        console.log("tagClickAdd");
+        // console.log("tagClickAdd");
 
         let ingSearch = document.getElementById('ingSearch');
         ingSearch.value = "";

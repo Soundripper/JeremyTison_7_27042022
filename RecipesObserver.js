@@ -17,6 +17,9 @@ class RecipesObserver {
         this.recipesWrapper.innerHTML = "";
         switch (action.type) {
             case 'main_search':
+                
+                startDate = Date.now();
+
                 this._mainSearch = action.value;
                 this.filterCascade();
                 this.applyAll(this._defaultRecipes);
@@ -153,6 +156,8 @@ class RecipesObserver {
         this.advtemplate.renderFiltered(this._defaultRecipes);
         this.advFilter.tagClickInit(this._defaultRecipes);
         this.filterTheFilters();
+        endDate = Date.now();
+        testTime();
     }
 
     filterCascade = () => {
@@ -160,10 +165,10 @@ class RecipesObserver {
         this.filteredRecipes = [];
         // if (this._mainSearch.length > 0) {
         //     this._defaultRecipes = this._defaultRecipes.filter(recipe => {
-        //             return (recipe.ingredients.filter(item => item.ingredient.toLowerCase().includes(this._mainSearch.toLowerCase())).length > 0) ||
-        //             recipe.name.toLowerCase().includes(this._mainSearch.toLowerCase()) ||
-        //             recipe.description.toLowerCase().includes(this._mainSearch.toLowerCase())
-        //         })
+        //         return (recipe.ingredients.filter(item => item.ingredient.toLowerCase().includes(this._mainSearch.toLowerCase())).length > 0) ||
+        //         recipe.name.toLowerCase().includes(this._mainSearch.toLowerCase()) ||
+        //         recipe.description.toLowerCase().includes(this._mainSearch.toLowerCase())
+        //     })
         // }
         if (this._mainSearch.length > 0) {
             for(let i=0; i<this._defaultRecipes.length; i++){
@@ -190,39 +195,40 @@ class RecipesObserver {
         }
   
         if (this._listAppareils.length > 0) {
-            // this.filteredRecipes = this._defaultRecipes;
             // this._listAppareils.forEach(element => {
             //     this._defaultRecipes = this._defaultRecipes.filter(item => item.appliance.includes(element))
             // })
+            this.filteredRecipes=[];
             for (let j=0; j<this._defaultRecipes.length; j++){
                 if (this._defaultRecipes[j].appliance.includes(this._listAppareils[0])){
                     // this._defaultRecipes = this._defaultRecipes.slice(j,1);
                     console.log(this._defaultRecipes[j]);
                     this.filteredRecipes.push(this._defaultRecipes[j]);
                 }
-                
             }
             this._defaultRecipes = this.filteredRecipes;
-            console.log(this.filteredRecipes);
+            console.log(this._defaultRecipes);
         }
 
         if (this._listUstensils.length > 0) {
+            console.log("filtercascade");
+            console.log(this._listUstensils);
             // this._listUstensils.forEach(element => {
             //     this._defaultRecipes = this._defaultRecipes.filter(item => item.ustensils.includes(element))
             // })
-            for (let j=0; j<this._defaultRecipes.length; j++){
-                for (let k=0; k<this._defaultRecipes[j].ustensils.length; k++){
-                    for (let i=0; i<this._listUstensils.length; i++){
-                        if (this._defaultRecipes[j].ustensils[k].includes(this._listUstensils[i])){
-                            // this._defaultRecipes = this._defaultRecipes.slice(j,1);
-                            console.log(this._defaultRecipes[j]);
+            this.filteredRecipes=[];
+            for (let i=0; i<this._listUstensils.length; i++){
+                for (let j=0; j<this._defaultRecipes.length; j++){
+                        if (this._defaultRecipes[j].ustensils.includes(this._listUstensils[i])){
                             this.filteredRecipes.push(this._defaultRecipes[j]);
+                            // this._defaultRecipes = this.filteredRecipes;
                         }
                     }
-                }
+                
             }   
+            this.filteredRecipes = [...new Set(this.filteredRecipes)];
             this._defaultRecipes = this.filteredRecipes;
-            console.log(this.filteredRecipes);
+            console.log(this._defaultRecipes);
         }
 
         if (this._defaultRecipes.length < 1){
