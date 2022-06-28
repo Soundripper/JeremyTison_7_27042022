@@ -34,12 +34,12 @@ class SearchForm {
         
     }
     render() {
-        const searchForm = `
-        <div class="input-group rounded col-12 mx-auto mt-3" id="searchBar">
-            <input type="search" class="form-control rounded bg-light search_General" placeholder="Rechercher une recette" aria-label="Search" aria-describedby="search-addon" />
-            <span class="searchIcon border-0" id="search-addon"></span>
-        </div>
-        `;
+        // const searchForm = `
+        // <div class="input-group rounded col-12 mx-auto mt-3" id="searchBar">
+        //     <input type="search" class="form-control rounded bg-light search_General" placeholder="Rechercher une recette" aria-label="Search" aria-describedby="search-addon" />
+        //     <span class="searchIcon border-0" id="search-addon"></span>
+        // </div>
+        // `;
         // const searchForm = `
         // <div class="input-group rounded col-12 mx-auto mt-3" id="searchBar">
         //     <input type="search" class="form-control rounded bg-light search_General" placeholder="Rechercher une recette" aria-label="Search" aria-describedby="search-addon" />
@@ -48,6 +48,15 @@ class SearchForm {
         //     </span>
         // </div>
         // `;
+        const searchForm = `
+        <div class="input-group col-12 mx-auto mt-3">
+            <input class="form-control py-2 search_General" type="search" placeholder="Rechercher une recette" id="searchBar">
+            <span class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button">
+                <i class="bi bi-search" ></i>
+                </button>
+            </span>
+        </div>`
         this.searchGeneral.innerHTML = searchForm;
         this.searchGeneralWrapper.appendChild(this.searchGeneral);
         this.inputSearch();
