@@ -186,13 +186,34 @@ class RecipesObserver {
             this._defaultRecipes = this.filteredRecipes;
         }
 
+        // if (this._listIngredients.length > 0) {
+        //     this._listIngredients.forEach(element => {
+        //         this._defaultRecipes = this._defaultRecipes.filter(recipe => {
+        //         return ((recipe.ingredients.filter(item => item.ingredient.includes(element))).length > 0)
+        //         })
+        //     })            
+        // }
         if (this._listIngredients.length > 0) {
-            this._listIngredients.forEach(element => {
-                this._defaultRecipes = this._defaultRecipes.filter(recipe => {
-                return ((recipe.ingredients.filter(item => item.ingredient.includes(element))).length > 0)
-                })
-            })            
+            console.log("filtercascade");
+            console.log(this._listIngredients);
+            this.filteredRecipes=[];
+            for (let i=0; i<this._defaultRecipes.length; i++){
+                console.log(this._defaultRecipes[i].ingredients);
+                let cptIngredients = 0;
+                for (let j=0; j<this._listIngredients.length; j++){
+                        if (this._defaultRecipes[i].ingredients.includes(this._listIngredients[j])){
+                            cptIngredients++;
+                        }
+                }
+                if (cptIngredients === this._listIngredients.length){
+                    this.filteredRecipes.push(this._defaultRecipes[i]);
+                }
+            }
+            this.filteredRecipes = [...new Set(this.filteredRecipes)];
+            this._defaultRecipes = this.filteredRecipes;
+            console.log(this._defaultRecipes);
         }
+
   
         if (this._listAppareils.length > 0) {
             // this._listAppareils.forEach(element => {
@@ -217,19 +238,23 @@ class RecipesObserver {
             //     this._defaultRecipes = this._defaultRecipes.filter(item => item.ustensils.includes(element))
             // })
             this.filteredRecipes=[];
-            for (let i=0; i<this._listUstensils.length; i++){
-                for (let j=0; j<this._defaultRecipes.length; j++){
-                        if (this._defaultRecipes[j].ustensils.includes(this._listUstensils[i])){
-                            this.filteredRecipes.push(this._defaultRecipes[j]);
-                        }
+            for (let i=0; i<this._defaultRecipes.length; i++){
+                let cptUstensils = 0;
+                for (let j=0; j<this._listUstensils.length; j++){
+                    if (this._defaultRecipes[i].ustensils.includes(this._listUstensils[j])){
+                        cptUstensils++;
                     }
-            }   
+                }
+                if (cptUstensils === this._listUstensils.length){
+                    this.filteredRecipes.push(this._defaultRecipes[i]);
+                }
+            }
             this.filteredRecipes = [...new Set(this.filteredRecipes)];
             this._defaultRecipes = this.filteredRecipes;
             console.log(this._defaultRecipes);
         }
 
-        if (this._defaultRecipes.length < 1){
+        if (this._defaultRecipes.length === 0){
             console.log('Aucune recette ne correspond à la recherche');
             const recettesWrapper = document.querySelector('.recettesCardsWrapper');
             recettesWrapper.innerHTML = `

@@ -2277,13 +2277,17 @@ class RecipesObserver {
             //     this._defaultRecipes = this._defaultRecipes.filter(item => item.ustensils.includes(element))
             // })
             this.filteredRecipes=[];
-            for (let i=0; i<this._listUstensils.length; i++){
-                for (let j=0; j<this._defaultRecipes.length; j++){
-                        if (this._defaultRecipes[j].ustensils.includes(this._listUstensils[i])){
-                            this.filteredRecipes.push(this._defaultRecipes[j]);
-                        }
+            for (let i=0; i<this._defaultRecipes.length; i++){
+                let cptUstensils = 0;
+                for (let j=0; j<this._listUstensils.length; j++){
+                    if (this._defaultRecipes[i].ustensils.includes(this._listUstensils[j])){
+                        cptUstensils++;
                     }
-            }   
+                }
+                if (cptUstensils === this._listUstensils.length){
+                    this.filteredRecipes.push(this._defaultRecipes[i]);
+                }
+            }
             this.filteredRecipes = [...new Set(this.filteredRecipes)];
             this._defaultRecipes = this.filteredRecipes;
             console.log(this._defaultRecipes);
