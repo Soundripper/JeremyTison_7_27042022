@@ -3,7 +3,6 @@ class App {
         this.recipesWrapper = document.querySelector('.recettesCardsWrapper')
         this.recipesAll = []
         this.recipes = recipes;
-        // this.recipesFiltered = []
     }
     async recipesAllFunction() {
         const Recipes = this.recipes.map(recipe => new RecipeFactory(recipe));
