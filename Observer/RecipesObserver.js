@@ -6,7 +6,6 @@ class RecipesObserver {
         this.recipesWrapper = document.querySelector('.recettesCardsWrapper');
         this.IngAppUstWrapper = document.getElementById('searchListsDropdowns');
         this._defaultRecipes = defaultRecipes;
-        // this.filteredRecipes = [];
         this._mainSearch = '';
         this._listIngredients = [];
         this._listAppareils = [];
