@@ -194,16 +194,15 @@ class RecipesObserver {
         //     })            
         // }
         if (this._listIngredients.length > 0) {
-            console.log("filtercascade");
-            console.log(this._listIngredients);
             this.filteredRecipes=[];
             for (let i=0; i<this._defaultRecipes.length; i++){
-                console.log(this._defaultRecipes[i].ingredients);
                 let cptIngredients = 0;
                 for (let j=0; j<this._listIngredients.length; j++){
-                        if (this._defaultRecipes[i].ingredients.includes(this._listIngredients[j])){
+                    for (let k=0; k<this._defaultRecipes[i].ingredients.length; k++){
+                        if (this._defaultRecipes[i].ingredients[k].ingredient.includes(this._listIngredients[j])){
                             cptIngredients++;
                         }
+                    }
                 }
                 if (cptIngredients === this._listIngredients.length){
                     this.filteredRecipes.push(this._defaultRecipes[i]);
