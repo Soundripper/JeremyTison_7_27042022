@@ -1807,19 +1807,14 @@ class SearchForm {
     }
     render() {
         const searchForm = `
-        <div class="input-group rounded col-12 mx-auto mt-3" id="searchBar">
-            <input type="search" class="form-control rounded bg-light search_General" placeholder="Rechercher une recette" aria-label="Search" aria-describedby="search-addon" />
-            <span class="searchIcon border-0" id="search-addon"></span>
-        </div>
-        `;
-        // const searchForm = `
-        // <div class="input-group rounded col-12 mx-auto mt-3" id="searchBar">
-        //     <input type="search" class="form-control rounded bg-light search_General" placeholder="Rechercher une recette" aria-label="Search" aria-describedby="search-addon" />
-        //     <span class="searchIcon border-0" id="search-addon">
-        //         <i class="bi bi-search" ></i>
-        //     </span>
-        // </div>
-        // `;
+        <div class="input-group col-12 mx-auto mt-3">
+            <input class="form-control py-2 search_General" type="search" placeholder="Rechercher une recette" id="searchBar">
+            <span class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button">
+                <i class="bi bi-search" ></i>
+                </button>
+            </span>
+        </div>`
         this.searchGeneral.innerHTML = searchForm;
         this.searchGeneralWrapper.appendChild(this.searchGeneral);
         this.inputSearch();
@@ -1931,22 +1926,12 @@ class IngAppUst{
         const ingChoices = document.querySelector('.ingChoices');
         let ingredients = [];
         ingChoices.innerHTML = "" ;
-        // data.forEach(item => {
-        //     item.ingredients.forEach(ingredient => ingredients.push(ingredient.ingredient));
-        // });
         for (let i=0; i<data.length; i++){
             for (let j=0; j<data[i].ingredients.length; j++){
                 ingredients.push(data[i].ingredients[j].ingredient);
             }
         }
         ingredients = [...new Set(ingredients)];
-        // console.log(ingredients);
-        // ingredients.forEach(elt => {
-        //     this.btn = document.createElement('button');
-        //     this.btn.classList.add('dropdown-item', 'btn-primary', 'bg-primary', 'text-light', 'ing');
-        //     this.btn.innerHTML = `${elt}`;
-        //     ingChoices.appendChild(this.btn);
-        // })
         for (let i=0; i<ingredients.length; i++){
             this.btn = document.createElement('button');
             this.btn.classList.add('dropdown-item', 'btn-primary', 'bg-primary', 'text-light', 'ing');
@@ -1955,19 +1940,12 @@ class IngAppUst{
         }
 
         let appareils = [];
-        // let appareils = data.map(item => item.appliance);
         for (let i=0; i<data.length; i++){
             appareils.push(data[i].appliance);
         }
         appareils = [...new Set(appareils)];
         const appChoices = document.querySelector('.appChoices');
-        appChoices.innerHTML =''
-        // appareils.forEach(elt => {
-        //     this.btn = document.createElement('button');
-        //     this.btn.classList.add('dropdown-item', 'btn-success', 'bg-success', 'text-light', 'app');
-        //     this.btn.innerHTML = `${elt}`;
-        //     appChoices.appendChild(this.btn);
-        // })
+        appChoices.innerHTML ='';
         for (let i=0; i<appareils.length; i++){
             this.btn = document.createElement('button');
             this.btn.classList.add('dropdown-item', 'btn-success', 'bg-success', 'text-light', 'app');
@@ -1976,20 +1954,13 @@ class IngAppUst{
         }
 
         let ustensils = [];
-        // let ustensils = data.map(item => item.ustensils);
         for (let i=0; i<data.length; i++){
             ustensils.push(data[i].ustensils);
         }
         let ustensilsFlat = "".split.call(ustensils, ",");
         ustensilsFlat = [...new Set(ustensilsFlat)];
         const ustChoices = document.querySelector('.ustChoices');
-        ustChoices.innerHTML =''
-        // ustensilsFlat.forEach(elt => {
-        //     this.btn = document.createElement('button');
-        //     this.btn.classList.add('dropdown-item', 'btn-danger', 'bg-danger', 'text-light', 'ust');
-        //     this.btn.innerHTML = `${elt}`;
-        //     ustChoices.appendChild(this.btn);
-        // })
+        ustChoices.innerHTML ='';
         for (let i=0; i<ustensilsFlat.length; i++){
             this.btn = document.createElement('button');
             this.btn.classList.add('dropdown-item', 'btn-danger', 'bg-danger', 'text-light', 'ust');
@@ -2035,15 +2006,6 @@ class TemplateCard {
         recipeDescription.innerHTML = `${this._recipe.description}`;
         ingRow.appendChild(recipeDescription);
 
-        // this._recipe.ingredients.forEach(ingredient => {
-        //     const ing = document.createElement('div');
-        //     ing.classList.add('t7', 'd-flex', 'justify-items-around');
-        //     ing.innerHTML += `
-        //         <p class="card-text fw-bolder m-0 ingredient">${ingredient.ingredient}: &nbsp</p>
-        //         <p class="card-text"> ${ingredient.quantity} ${ingredient.unit} </p>
-        //     `;
-        //     ingWrapper.appendChild(ing);
-        // });
         for (let i=0; i<this._recipe.ingredients.length; i++){
             const ing = document.createElement('div');
             ing.classList.add('t7', 'd-flex', 'justify-items-around');
@@ -2066,7 +2028,6 @@ class RecipesObserver {
         this.recipesWrapper = document.querySelector('.recettesCardsWrapper');
         this.IngAppUstWrapper = document.getElementById('searchListsDropdowns');
         this._defaultRecipes = defaultRecipes;
-        // this.filteredRecipes = [];
         this._mainSearch = '';
         this._listIngredients = [];
         this._listAppareils = [];
@@ -2094,7 +2055,6 @@ class RecipesObserver {
                             this._listIngredients.splice(i,1);
                         }
                     }
-                    // this._listIngredients = this._listIngredients.filter(item => item !== action.itemName)
                 }
                 ////////////// si _listIngredients n'inclue pas le tag concerné
                 else {
@@ -2109,14 +2069,12 @@ class RecipesObserver {
                 this._defaultRecipes = recipes;
                 ////////////// si _listAppareils inclue le tag concerné
                 if (this._listAppareils.includes(action.itemName)){
-                    // this._listAppareils = this._listAppareils.filter(item => item !== action.itemName)
                     if (this._listAppareils.includes(action.itemName)){
                         for (let i=0; i<this._listAppareils.length; i++){
                             if (this._listAppareils[i] === action.itemName){
                                 this._listAppareils.splice(i,1);
                             }
                         }
-                        // this._listIngredients = this._listIngredients.filter(item => item !== action.itemName)
                     }
                 }
                 ////////////// si _listAppareils n'inclue pas le tag concerné
@@ -2132,7 +2090,6 @@ class RecipesObserver {
                 this._defaultRecipes = recipes;
                 ////////////// si _listAppareils inclue le tag concerné
                 if (this._listUstensils.includes(action.itemName)){
-                    // this._listUstensils = this._listUstensils.filter(item => item !== action.itemName)
                     for (let i=0; i<this._listUstensils.length; i++){
                         if (this._listUstensils[i] === action.itemName){
                             this._listUstensils.splice(i,1);
@@ -2150,28 +2107,6 @@ class RecipesObserver {
         }
     }
     
-    // filterTheFilters = () => {
-    //     const tagItems = document.querySelectorAll('.dropdown-item')
-    //     let arrAdvToFilter = Array.from(tagItems);
-    //     arrAdvToFilter.forEach(elementsAdv => {
-    //         this._listIngredients.forEach(element => {
-    //             if(elementsAdv.innerHTML.toLowerCase().includes(element.toLowerCase())){
-    //                 elementsAdv.remove();
-    //             }
-    //         });      
-    //         this._listAppareils.forEach(element => {
-    //             if(elementsAdv.innerHTML.toLowerCase().includes(element.toLowerCase())){
-    //                 elementsAdv.remove();
-    //             }
-    //         });
-    //         this._listUstensils.forEach(element => {
-    //             if(elementsAdv.innerHTML.toLowerCase().includes(element.toLowerCase())){
-    //                 elementsAdv.remove();
-    //             }
-    //         });
-    //     });
-    // }
-
     filterTheFilters = () => {
         const tagItems = document.querySelectorAll('.dropdown-item');
         let arrAdvToFilter = Array.from(tagItems);
@@ -2194,20 +2129,6 @@ class RecipesObserver {
         }
     }
 
-    // applyAll = (resultRecipes) => {
-    //     // let startDate = Date.now();
-    //     resultRecipes.forEach(recipe => {
-    //         const Template = new TemplateCard(recipe);
-    //         this.recipesWrapper.appendChild(Template.createRecipeCard());
-    //         })
-    //     // let endDate = Date.now();
-    //     // console.log("applyAll Time = ");
-    //     // console.log(endDate - startDate);
-    //     this.advtemplate.renderFiltered(this._defaultRecipes);
-    //     this.advFilter.tagClickInit(this._defaultRecipes);
-    //     this.filterTheFilters();
-    // }
-
     applyAll = (resultRecipes) => {
         for (let i = 0; i < resultRecipes.length; i++) {
             const Template = new TemplateCard(resultRecipes[i]);
@@ -2223,13 +2144,6 @@ class RecipesObserver {
     filterCascade = () => {
         this._defaultRecipes = recipes;
         this.filteredRecipes = [];
-        // if (this._mainSearch.length > 0) {
-        //     this._defaultRecipes = this._defaultRecipes.filter(recipe => {
-        //         return (recipe.ingredients.filter(item => item.ingredient.toLowerCase().includes(this._mainSearch.toLowerCase())).length > 0) ||
-        //         recipe.name.toLowerCase().includes(this._mainSearch.toLowerCase()) ||
-        //         recipe.description.toLowerCase().includes(this._mainSearch.toLowerCase())
-        //     })
-        // }
         if (this._mainSearch.length > 0) {
             for(let i=0; i<this._defaultRecipes.length; i++){
                 for(let j=0; j<this._defaultRecipes[i].ingredients.length; j++){
@@ -2247,17 +2161,27 @@ class RecipesObserver {
         }
 
         if (this._listIngredients.length > 0) {
-            this._listIngredients.forEach(element => {
-                this._defaultRecipes = this._defaultRecipes.filter(recipe => {
-                return ((recipe.ingredients.filter(item => item.ingredient.includes(element))).length > 0)
-                })
-            })            
+            this.filteredRecipes=[];
+            for (let i=0; i<this._defaultRecipes.length; i++){
+                let cptIngredients = 0;
+                for (let j=0; j<this._listIngredients.length; j++){
+                    for (let k=0; k<this._defaultRecipes[i].ingredients.length; k++){
+                        if (this._defaultRecipes[i].ingredients[k].ingredient.includes(this._listIngredients[j])){
+                            cptIngredients++;
+                        }
+                    }
+                }
+                if (cptIngredients === this._listIngredients.length){
+                    this.filteredRecipes.push(this._defaultRecipes[i]);
+                }
+            }
+            this.filteredRecipes = [...new Set(this.filteredRecipes)];
+            this._defaultRecipes = this.filteredRecipes;
+            console.log(this._defaultRecipes);
         }
+
   
         if (this._listAppareils.length > 0) {
-            // this._listAppareils.forEach(element => {
-            //     this._defaultRecipes = this._defaultRecipes.filter(item => item.appliance.includes(element))
-            // })
             this.filteredRecipes=[];
             for (let j=0; j<this._defaultRecipes.length; j++){
                 if (this._defaultRecipes[j].appliance.includes(this._listAppareils[0])){
@@ -2273,9 +2197,6 @@ class RecipesObserver {
         if (this._listUstensils.length > 0) {
             console.log("filtercascade");
             console.log(this._listUstensils);
-            // this._listUstensils.forEach(element => {
-            //     this._defaultRecipes = this._defaultRecipes.filter(item => item.ustensils.includes(element))
-            // })
             this.filteredRecipes=[];
             for (let i=0; i<this._defaultRecipes.length; i++){
                 let cptUstensils = 0;
@@ -2293,7 +2214,7 @@ class RecipesObserver {
             console.log(this._defaultRecipes);
         }
 
-        if (this._defaultRecipes.length < 1){
+        if (this._defaultRecipes.length === 0){
             console.log('Aucune recette ne correspond à la recherche');
             const recettesWrapper = document.querySelector('.recettesCardsWrapper');
             recettesWrapper.innerHTML = `
@@ -2316,7 +2237,6 @@ class RecipesSubject {
         for(let i=0; i<this.observers.length; i++){
             this.observers[i].update(action)
         }
-        // this.observers.forEach(observer => observer.update(action));
     }
 }
 
@@ -2328,31 +2248,6 @@ class AdvFilters{
         this.itemName = null;
         this.resultInput = null;
     }
-    ///////////////////////////////////////////////////////////////////////////////
-    // Gestionnaire Input advanced FILTER//
-    // advFiltersSearchBar = () => {
-    //     // console.log("advFiltersSearchBar");
-    //     const dropMenus = document.querySelectorAll('.dropCollapse');
-    //     dropMenus.forEach(dropMenu =>{
-    //         const advSearch = dropMenu.querySelectorAll('.searchAdv')
-    //         const advSearchValue = (event) => {
-    //             const tagItems = dropMenu.querySelectorAll('.dropdown-item')
-    //             this.resultInput = event.target.value;
-    //             let arrAdv = Array.from(tagItems);
-    //             arrAdv.forEach(elementsAdv => {
-    //                 if(elementsAdv.innerHTML.toLowerCase().includes(this.resultInput.toLowerCase())){
-    //                     elementsAdv.style.display = 'flex';
-    //                 }
-    //                 else{
-    //                     elementsAdv.style.display = 'none';
-    //                 }
-    //             });
-    //         }
-    //         advSearch.forEach(e => {
-    //             e.addEventListener('input', advSearchValue)
-    //         })
-    //     })    
-    // }
     advFiltersSearchBar = () => {
         // console.log("advFiltersSearchBar");
         const dropMenus = document.querySelectorAll('.dropCollapse');
@@ -2390,41 +2285,6 @@ class AdvFilters{
         let ustSearch = document.getElementById('ustSearch');
         ustSearch.value = "";
 
-        // this.btnTags.forEach(elt => {
-        //     elt.addEventListener('click', (e) => {
-        //         this.itemName = e.target.innerHTML;
-        //         const newBtn = document.createElement('span');
-        //         if (e.target.classList.contains('ing')) {
-        //             newBtn.innerHTML = `
-        //             <button type="button" class="btn btn-primary position-relative me-2 mb-2 tag">
-        //             <span> ${this.itemName} </span> &nbsp
-        //             <i class="bi bi-x-circle xIng"></i>
-        //             </button>
-        //         `;
-        //         this.subjectRunIng(this.subject);
-        //         }
-        //         else if (e.target.classList.contains('app')) {
-        //             newBtn.innerHTML = `
-        //             <button type="button" class="btn btn-success position-relative me-2 mb-2 tag">
-        //             <span> ${this.itemName} </span> &nbsp
-        //             <i class="bi bi-x-circle xApp"></i>
-        //             </button>
-        //         `;
-        //         this.subjectRunApp(this.subject);
-        //         }
-        //         else if (e.target.classList.contains('ust')) {
-        //             newBtn.innerHTML = `
-        //             <button type="button" class="btn btn-danger position-relative me-2 mb-2 tag">
-        //             <span> ${this.itemName} </span> &nbsp
-        //             <i class="bi bi-x-circle xUst"></i>
-        //             </button>
-        //         `;
-        //         this.subjectRunUst(this.subject);
-        //         }
-        //         this.tagCloseAdd(newBtn);
-        //         filterBadgesWrapper.appendChild(newBtn);
-        //     })
-        // })
         for(let i=0; i<this.btnTags.length; i++){
             this.btnTags[i].addEventListener('click', (e) => {
                 this.itemName = e.target.innerHTML;
@@ -2463,8 +2323,6 @@ class AdvFilters{
     }
 
     tagClickAdd = (newBtn) => {
-        // console.log("tagClickAdd");
-
         let ingSearch = document.getElementById('ingSearch');
         ingSearch.value = "";
         let appSearch = document.getElementById('appSearch');
@@ -2509,7 +2367,6 @@ class AdvFilters{
     }
 
     tagCloseAdd = (btn) => {
-        // console.log("tagCloseAdd");
         btn.addEventListener('click', (e) => {
 
             let ingSearch = document.getElementById('ingSearch');
@@ -2587,11 +2444,6 @@ const dropBtns = document.querySelectorAll('.dropdown-toggle');
 let dropDowns = document.querySelectorAll('.dropCollapse');
 document.addEventListener("click", (e) => {
     if(e.target.classList.contains('dropdown-toggle')){
-        // dropDowns.forEach(e =>{
-        //     if(e.classList.contains('show')){
-        //         e.classList.toggle("show");
-        //     }
-        // });
         for (let i=0; i<dropDowns.length; i++){
             if(dropDowns[i].classList.contains('show')){
                 dropDowns[i].classList.toggle("show");
@@ -2600,31 +2452,17 @@ document.addEventListener("click", (e) => {
     }
     else {
         if( (e.target.classList.contains('dropdown-item')) || (e.target.classList.contains('searchAdv')) ){ }
-        else {
-            for (let i=0; i<dropDowns.length; i++){
-                    dropDowns[i].classList.remove("show");
+            else {
+                for (let i=0; i<dropDowns.length; i++){
+                        dropDowns[i].classList.remove("show");
+                }
+                for (let i=0; i<dropBtns.length; i++){
+                    dropBtns[i].classList.add("show");
+                }
             }
-            // dropDowns.forEach(e => {
-            //     e.classList.remove("show");
-            // })
-            for (let i=0; i<dropBtns.length; i++){
-                dropBtns[i].classList.add("show");
-            }
-        }
-        // dropBtns.forEach(e => {
-        //         e.classList.add("show");
-        //     })
-        
         }
 });
 
-// dropBtns.forEach(
-//     (elm) => elm.onclick = (e) => {
-//         dropBtns.forEach((elm) => 
-//         elm.classList[e.target === elm ? 'add' : 'add']("show")
-//         )
-//     }
-// )
 for (let i=0; i<dropBtns.length; i++){
     dropBtns[i].addEventListener("click", (e) => {
         for (let i=0; i<dropBtns.length; i++){
@@ -2632,11 +2470,6 @@ for (let i=0; i<dropBtns.length; i++){
         }
     })
 };
-
-// document.addEventListener('click', (e)=> {
-//     console.log("Clicked element = ");
-//     console.log(e.target);
-// })
 
 let startDate = Date.now();
 let endDate = Date.now();
@@ -2656,11 +2489,9 @@ class App {
         // this.recipesFiltered = []
     }
     async recipesAllFunction() {
-        // const Recipes = this.recipes.map(recipe => new RecipeFactory(recipe));
         for (let i=0; i < this.recipes.length; i++){
             this.recipesAll.push(new RecipeFactory(this.recipes[i]));
         }
-        // this.recipesAll = Recipes;
     }
     async main() {
         await this.recipesAllFunction();
@@ -2679,10 +2510,6 @@ class App {
         AdvFiltersI.tagClickInit(this.recipesSubject);
         AdvFiltersI.advFiltersSearchBar();
         
-        // this.recipesAll.forEach(recipe => {
-        // const Template = new TemplateCard(recipe)
-        // this.recipesWrapper.appendChild(Template.createRecipeCard())
-        // })
         for (let i=0; i < this.recipesAll.length; i++){
             const Template = new TemplateCard(this.recipesAll[i])
             this.recipesWrapper.appendChild(Template.createRecipeCard())

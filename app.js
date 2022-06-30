@@ -3,14 +3,11 @@ class App {
         this.recipesWrapper = document.querySelector('.recettesCardsWrapper')
         this.recipesAll = []
         this.recipes = recipes;
-        // this.recipesFiltered = []
     }
     async recipesAllFunction() {
-        // const Recipes = this.recipes.map(recipe => new RecipeFactory(recipe));
         for (let i=0; i < this.recipes.length; i++){
             this.recipesAll.push(new RecipeFactory(this.recipes[i]));
         }
-        // this.recipesAll = Recipes;
     }
     async main() {
         await this.recipesAllFunction();
@@ -29,10 +26,6 @@ class App {
         AdvFiltersI.tagClickInit(this.recipesSubject);
         AdvFiltersI.advFiltersSearchBar();
         
-        // this.recipesAll.forEach(recipe => {
-        // const Template = new TemplateCard(recipe)
-        // this.recipesWrapper.appendChild(Template.createRecipeCard())
-        // })
         for (let i=0; i < this.recipesAll.length; i++){
             const Template = new TemplateCard(this.recipesAll[i])
             this.recipesWrapper.appendChild(Template.createRecipeCard())
