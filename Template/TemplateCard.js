@@ -32,15 +32,17 @@ class TemplateCard {
         recipeDescription.classList.add('card-text', 'col-6', 'px-2', 't7', 'recipe-text');
         recipeDescription.innerHTML = `${this._recipe.description}`;
         ingRow.appendChild(recipeDescription);
-
-                for (let i=0; i<this._recipe.ingredients.length; i++){
-            const ing = document.createElement('div');
-            ing.classList.add('t7', 'd-flex', 'justify-items-around');
-            ing.innerHTML += `
-                <p class="card-text fw-bolder m-0 ingredient">${this._recipe.ingredients[i].ingredient}: &nbsp</p>
-                <p class="card-text"> ${this._recipe.ingredients[i].quantity} ${this._recipe.ingredients[i].unit} </p>
-            `;
-            ingWrapper.appendChild(ing);
+        for (let i=0; i<this._recipe.ingredients.length; i++){
+        const ing = document.createElement('div');
+        ing.classList.add('t7', 'd-flex', 'justify-items-around');
+        if (this._recipe.ingredients[i].unit == null){
+            this._recipe.ingredients[i].unit = '';
+        }
+        ing.innerHTML += `
+            <p class="card-text fw-bolder m-0 ingredient">${this._recipe.ingredients[i].ingredient}: &nbsp</p>
+            <p class="card-text"> ${this._recipe.ingredients[i].quantity} ${this._recipe.ingredients[i].unit} </p>
+        `;
+        ingWrapper.appendChild(ing);
         }
         
         return this.cardWrapper;
