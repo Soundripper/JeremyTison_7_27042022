@@ -32,8 +32,10 @@ class TemplateCard {
         recipeDescription.classList.add('card-text', 'col-6', 'px-2', 't7', 'recipe-text');
         recipeDescription.innerHTML = `${this._recipe.description}`;
         ingRow.appendChild(recipeDescription);
-
         this._recipe.ingredients.forEach(ingredient => {
+            if (ingredient.unit == null){
+                ingredient.unit = '';
+            }
             const ing = document.createElement('div');
             ing.classList.add('t7', 'd-flex', 'justify-items-around');
             ing.innerHTML += `
